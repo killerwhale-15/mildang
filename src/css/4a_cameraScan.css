@@ -1,0 +1,253 @@
+.camera-scan {
+  position: relative;
+  width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  aspect-ratio: 402 / 874;
+  overflow: hidden;
+  color: #212121;
+  background: #fff;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.camera-scan button,
+.camera-scan input {
+  font-family: inherit;
+}
+
+.camera-scan__status {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 50px;
+  pointer-events: none;
+}
+
+.camera-scan__status img {
+  position: absolute;
+}
+
+.camera-scan__time {
+  top: 12px;
+  left: 21px;
+  width: 54px;
+  height: 21px;
+}
+
+.camera-scan__notch {
+  top: -2px;
+  left: 50%;
+  width: 183px;
+  height: 30px;
+  transform: translateX(-50%);
+}
+
+.camera-scan__status-right {
+  top: 17px;
+  right: 15px;
+  width: 67px;
+  height: 12px;
+}
+
+.camera-scan__topbar {
+  position: absolute;
+  z-index: 3;
+  top: 46px;
+  right: 0;
+  left: 0;
+  height: 55px;
+}
+
+.camera-scan__topbar button {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+}
+
+.camera-scan__topbar img {
+  width: 8px;
+  height: 14px;
+}
+
+.camera-scan__guide {
+  position: absolute;
+  z-index: 2;
+  top: 112px;
+  right: 0;
+  left: 0;
+  color: #757575;
+  text-align: center;
+}
+
+.camera-scan__guide p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.112px;
+}
+
+.camera-scan__viewport {
+  position: absolute;
+  top: 22.0824%;
+  left: 50%;
+  width: min(352px, calc(100% - 50px));
+  height: 60.6407%;
+  min-height: 360px;
+  max-height: 530px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f5f5f5;
+  transform: translateX(-50%);
+}
+
+.camera-scan__placeholder,
+.camera-scan__viewport video,
+.camera-scan__preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.camera-scan__placeholder {
+  object-fit: fill;
+}
+
+.camera-scan__viewport video,
+.camera-scan__preview {
+  z-index: 1;
+  opacity: 0;
+  object-fit: cover;
+  transition: opacity 140ms ease-out;
+}
+
+.camera-scan__viewport .is-visible {
+  opacity: 1;
+}
+
+.camera-scan__notice {
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  bottom: 24px;
+  left: 20px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  color: #616161;
+  background: rgb(255 255 255 / 92%);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+}
+
+.camera-scan__notice button {
+  min-width: 82px;
+  height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  color: #212121;
+  background: #ffd900;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.camera-scan__controls {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+}
+
+.camera-scan__controls button {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.camera-scan__gallery {
+  top: 89.13%;
+  left: 15.92%;
+  width: 37px;
+  height: 37px;
+}
+
+.camera-scan__gallery img {
+  width: 37px;
+  height: 37px;
+}
+
+.camera-scan__controls input {
+  display: none;
+}
+
+.camera-scan__capture {
+  top: 87.5286%;
+  left: 50%;
+  width: 65px;
+  height: 65px;
+  transform: translateX(-50%);
+}
+
+.camera-scan__capture:active {
+  transform: translateX(-50%) scale(0.96);
+}
+
+.camera-scan__capture:disabled {
+  cursor: wait;
+}
+
+.camera-scan__shutter {
+  position: absolute;
+  inset: 0;
+  width: 65px;
+  height: 65px;
+}
+
+.camera-scan__camera {
+  position: absolute;
+  top: 17px;
+  left: 14px;
+  width: 37px;
+  height: 32px;
+}
+
+.camera-scan button:focus-visible {
+  outline: 3px solid #212121;
+  outline-offset: 2px;
+}
+
+.camera-scan__topbar button:active {
+  transform: scale(0.94);
+}
+
+@media (max-width: 600px) {
+  .camera-scan {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .camera-scan__viewport video,
+  .camera-scan__preview {
+    transition: none;
+  }
+}

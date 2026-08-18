@@ -1,0 +1,335 @@
+.mildang-talk {
+  position: relative;
+  width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  aspect-ratio: 402 / 874;
+  overflow: hidden;
+  color: #212121;
+  background: #fff;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.mildang-talk button,
+.mildang-talk input {
+  font-family: inherit;
+}
+
+.mildang-talk__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mildang-talk__status {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 50px;
+  pointer-events: none;
+}
+
+.mildang-talk__status img {
+  position: absolute;
+}
+
+.mildang-talk__time {
+  top: 12px;
+  left: 21px;
+  width: 54px;
+  height: 21px;
+}
+
+.mildang-talk__notch {
+  top: -2px;
+  left: 50%;
+  width: 183px;
+  height: 30px;
+  transform: translateX(-50%);
+}
+
+.mildang-talk__status-right {
+  top: 17px;
+  right: 15px;
+  width: 67px;
+  height: 12px;
+}
+
+.mildang-talk__topbar {
+  position: absolute;
+  top: 68px;
+  right: 0;
+  left: 0;
+  height: 55px;
+}
+
+.mildang-talk__topbar img {
+  position: absolute;
+  top: 11px;
+  left: 25px;
+  width: 80px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.mildang-talk__intro {
+  position: absolute;
+  top: 138px;
+  left: 24px;
+  margin: 0;
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.112px;
+  white-space: nowrap;
+}
+
+.mildang-talk__date-separator {
+  position: absolute;
+  top: 172px;
+  right: 21px;
+  left: 21px;
+  height: 55px;
+}
+
+.mildang-talk__date-separator time {
+  display: block;
+  margin: 0;
+  color: #757575;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.12px;
+  text-align: center;
+}
+
+.mildang-talk__new-message {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.mildang-talk__new-message span {
+  height: 1px;
+  border-radius: 99px;
+  background: #ffd900;
+}
+
+.mildang-talk__new-message strong {
+  color: #ffd900;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.12px;
+  white-space: nowrap;
+}
+
+.mildang-talk__conversation {
+  position: absolute;
+  top: 249px;
+  right: 21px;
+  bottom: 250px;
+  left: 21px;
+  overflow-y: auto;
+}
+
+.mildang-talk__message {
+  position: relative;
+  min-height: 137px;
+  margin-bottom: 12px;
+}
+
+.mildang-talk__message > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 29px;
+}
+
+.mildang-talk__message p {
+  position: absolute;
+  top: 0;
+  left: 43px;
+  right: 0;
+  width: auto;
+  min-height: 100px;
+  height: auto;
+  margin: 0;
+  padding: 14px;
+  overflow-wrap: anywhere;
+  border-radius: 16px;
+  color: #000;
+  background: #f5f5f5;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.096px;
+  white-space: normal;
+}
+
+.mildang-talk__composer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 241px;
+  border-top: 1px solid #ececec;
+}
+
+.mildang-talk__composer fieldset {
+  position: absolute;
+  top: 20px;
+  right: 21px;
+  left: 21px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.mildang-talk__composer legend {
+  height: 22px;
+  padding: 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.14px;
+}
+
+.mildang-talk__composer fieldset > div {
+  display: flex;
+  gap: 8px;
+  margin-top: 11px;
+}
+
+.mildang-talk__composer fieldset button {
+  height: 32px;
+  padding: 0;
+  border: 1px solid #f5f5f5;
+  border-radius: 8px;
+  color: #000;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.14px;
+  white-space: nowrap;
+}
+
+.mildang-talk__composer fieldset button:nth-child(1),
+.mildang-talk__composer fieldset button:nth-child(2) {
+  flex: 0 0 65px;
+}
+
+.mildang-talk__composer fieldset button:nth-child(3) {
+  flex: 0 0 76px;
+}
+
+.mildang-talk__composer fieldset button:nth-child(4) {
+  flex: 0 0 70px;
+}
+
+.mildang-talk__input {
+  position: absolute;
+  top: 97px;
+  right: 21px;
+  left: 21px;
+  height: 50px;
+}
+
+.mildang-talk__input input {
+  width: 100%;
+  height: 100%;
+  padding: 0 25px;
+  border: 0;
+  border-radius: 16px;
+  outline: 0;
+  color: #212121;
+  background: #f5f5f5;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.112px;
+}
+
+.mildang-talk__input input::placeholder {
+  color: #757575;
+  opacity: 1;
+}
+
+.mildang-talk__end {
+  position: absolute;
+  top: 159px;
+  right: 21px;
+  left: 21px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  color: #000;
+  background: #ffd900;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+
+.mildang-talk button:focus-visible,
+.mildang-talk input:focus-visible {
+  outline: 3px solid #212121;
+  outline-offset: 2px;
+}
+
+.mildang-talk button:active {
+  transform: scale(0.99);
+}
+
+@media (max-width: 600px) {
+  .mildang-talk {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+  }
+}
+
+@media (max-width: 374px) {
+  .mildang-talk__new-message {
+    gap: 8px;
+  }
+
+  .mildang-talk__message {
+    right: 16px;
+    left: 16px;
+  }
+
+  .mildang-talk__message p {
+    right: 0;
+    left: 39px;
+    width: auto;
+    font-size: 11px;
+  }
+
+  .mildang-talk__composer fieldset,
+  .mildang-talk__input,
+  .mildang-talk__end {
+    right: 16px;
+    left: 16px;
+  }
+
+  .mildang-talk__composer fieldset > div {
+    gap: 4px;
+  }
+
+}

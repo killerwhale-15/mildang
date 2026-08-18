@@ -1,0 +1,296 @@
+.payment-screen {
+  position: relative;
+  width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  aspect-ratio: 402 / 874;
+  overflow: hidden;
+  color: #212121;
+  background: #fff;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.payment-screen__header {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 18px);
+  left: 0;
+  width: 100%;
+  height: 55px;
+}
+
+.payment-screen__logo {
+  position: absolute;
+  top: 12px;
+  left: 52px;
+  width: 80px;
+  height: 32px;
+}
+
+.payment-screen__back {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 12px;
+  display: grid;
+  width: 32px;
+  height: 40px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.payment-screen__back img {
+  width: 9px;
+  height: 16px;
+}
+
+.payment-screen__intro {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.payment-screen__title {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 130px);
+  left: 24px;
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: -0.34px;
+}
+
+.payment-screen__title span,
+.payment-screen__description span {
+  display: block;
+  white-space: nowrap;
+}
+
+.payment-screen__description {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 238px);
+  left: 24px;
+  margin: 0;
+  color: #757575;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.payment-screen__message {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 736px);
+  right: 24px;
+  left: 24px;
+  min-height: 18px;
+  text-align: center;
+}
+
+.payment-screen__message p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.12px;
+  white-space: nowrap;
+}
+
+.payment-screen__demo-notice {
+  color: #8f8f8f;
+}
+
+.payment-screen__error {
+  overflow: hidden;
+  color: #c62828;
+  text-overflow: ellipsis;
+}
+
+.payment-card {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 310px);
+  right: 21px;
+  left: 21px;
+  height: 340px;
+  overflow: hidden;
+  border: 1px solid #ffd900;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.payment-card__heading {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  left: 27px;
+  height: 128px;
+  border-bottom: 2px solid #ececec;
+}
+
+.payment-card__heading h2 {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.24px;
+}
+
+.payment-card__heading strong,
+.payment-card__heading p {
+  position: absolute;
+  left: 1px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.payment-card__heading strong {
+  top: 66px;
+  font-weight: 600;
+}
+
+.payment-card__heading p {
+  top: 88px;
+  color: #757575;
+  font-weight: 500;
+}
+
+.payment-card__badge {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  display: grid;
+  width: 59px;
+  height: 26px;
+  place-items: center;
+  border-radius: 24px;
+  background: #ffeb98;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.14px;
+}
+
+.payment-card__benefits {
+  position: absolute;
+  top: 145px;
+  right: 26px;
+  left: 28px;
+  display: grid;
+  gap: 12px;
+}
+
+.payment-card__benefit {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 9px;
+  align-items: center;
+  height: 24px;
+  color: #757575;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.payment-card__benefit img {
+  width: 24px;
+  height: 24px;
+}
+
+.payment-card__benefit strong {
+  color: #000;
+  font-weight: 600;
+}
+
+.payment-card__total {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  left: 24px;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ececec;
+  padding: 0 13px 0 17px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.144px;
+}
+
+.payment-screen__submit {
+  position: absolute;
+  right: 21px;
+  bottom: 50px;
+  left: 21px;
+  height: 60px;
+  padding: 0;
+  border: 0;
+  border-radius: 32px;
+  color: #000;
+  background: #ffd900;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+
+.payment-screen button:focus-visible {
+  outline: 3px solid #212121;
+  outline-offset: 3px;
+}
+
+.payment-screen__submit:active {
+  transform: scale(0.99);
+}
+
+.payment-screen--two-week .payment-screen__submit {
+  top: calc(env(safe-area-inset-top, 0px) + 680px);
+  bottom: auto;
+  height: 48px;
+  border-radius: 16px;
+}
+
+.payment-screen--two-week::after {
+  display: block;
+  width: 1px;
+  height: calc(env(safe-area-inset-top, 0px) + 770px);
+  content: '';
+}
+
+@media (max-width: 600px) {
+  .payment-screen {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+  }
+
+  .payment-screen--two-week {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-height: 760px) {
+  .payment-screen--two-week .payment-card {
+    top: calc(env(safe-area-inset-top, 0px) + 310px);
+    height: 340px;
+  }
+
+  .payment-screen--two-week .payment-screen__submit {
+    top: calc(env(safe-area-inset-top, 0px) + 680px);
+    bottom: auto;
+  }
+}

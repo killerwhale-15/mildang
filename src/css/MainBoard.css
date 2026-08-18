@@ -1,0 +1,490 @@
+.main-board {
+  position: relative;
+  width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  aspect-ratio: 402 / 874;
+  overflow: hidden;
+  color: #212121;
+  background: #fff;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.main-board button {
+  font-family: inherit;
+}
+
+.main-board__status {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 50px;
+  pointer-events: none;
+}
+
+.main-board__status img {
+  position: absolute;
+}
+
+.main-board__time {
+  top: 12px;
+  left: 21px;
+  width: 54px;
+  height: 21px;
+}
+
+.main-board__notch {
+  top: -2px;
+  left: 50%;
+  width: 183px;
+  height: 30px;
+  transform: translateX(-50%);
+}
+
+.main-board__status-right {
+  top: 17px;
+  right: 15px;
+  width: 67px;
+  height: 12px;
+}
+
+.main-board__header {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  left: 0;
+  height: 55px;
+}
+
+.main-board__header h1 {
+  position: absolute;
+  top: 12px;
+  left: 25px;
+  width: 80px;
+  height: 32px;
+  margin: 0;
+}
+
+.main-board__header img {
+  width: 80px;
+  height: 32px;
+}
+
+.budget-summary {
+  position: absolute;
+  top: 118px;
+  right: 20px;
+  left: 22px;
+  height: 149px;
+  overflow: hidden;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.budget-summary__heading {
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.budget-summary__heading h2 {
+  margin: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.budget-summary__heading span {
+  display: grid;
+  width: 95px;
+  height: 20px;
+  place-items: center;
+  border-radius: 24px;
+  color: #000;
+  background: #ffeb98;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+}
+
+.budget-summary__amount {
+  position: absolute;
+  top: 43px;
+  left: 16px;
+  height: 44px;
+  margin: 0;
+  color: #757575;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 44px;
+  letter-spacing: 0.256px;
+}
+
+.budget-summary__amount strong {
+  color: #000;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.budget-summary__progress {
+  position: absolute;
+  top: 97px;
+  right: 32px;
+  left: 16px;
+  height: 10px;
+  overflow: visible;
+  border-radius: 16px;
+  background: #ececec;
+}
+
+.budget-summary__progress-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 66.6667%;
+  border-radius: 16px;
+  background: #ffd900;
+}
+
+.budget-summary__progress img {
+  position: absolute;
+  top: -6px;
+  left: calc(66.6667% - 12px);
+  width: 24px;
+  height: 24px;
+}
+
+.budget-summary__caption {
+  position: absolute;
+  top: 115px;
+  left: 16px;
+  margin: 0;
+  color: #757575;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.08px;
+}
+
+.budget-summary__caption--behind {
+  color: #c43b2f;
+  font-weight: 800;
+}
+
+.coach-message {
+  position: absolute;
+  top: 286px;
+  right: 73px;
+  left: 34px;
+  height: 55px;
+}
+
+.coach-message > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 29px;
+}
+
+.coach-message p {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  width: 251px;
+  height: 55px;
+  margin: 0;
+  padding: 7px 16px;
+  overflow: hidden;
+  border-radius: 8px;
+  color: #000;
+  background: #fff;
+  box-shadow: 6px 2px 12px #ececec;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.12px;
+  white-space: normal;
+}
+
+.coach-message p span {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.main-board__cards,
+.main-board__actions {
+  position: absolute;
+  right: 21px;
+  left: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.main-board__cards {
+  top: 366px;
+  height: 81px;
+}
+
+.today-card {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  color: #757575;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+
+.today-card--notice {
+  border-color: #ffd900;
+  background: #fff5cc;
+}
+
+.today-card--notice > img {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+}
+
+.today-card strong,
+.today-card span {
+  position: absolute;
+  left: 12px;
+  white-space: nowrap;
+}
+
+.today-card strong {
+  top: 12px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.14px;
+}
+
+.today-card span {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.08px;
+}
+
+.today-card span:nth-of-type(1) {
+  top: 35px;
+}
+
+.today-card span:nth-of-type(2) {
+  top: 49px;
+}
+
+.today-card--promise .today-card__promise-copy {
+  top: 39px;
+  width: 122px;
+  line-height: 13px;
+  white-space: normal;
+}
+
+.today-card--promise > img {
+  position: absolute;
+  top: 43px;
+  right: 12px;
+  width: 8px;
+  height: 14px;
+  transform: rotate(180deg);
+}
+
+.main-board__actions {
+  top: 459px;
+  height: 42px;
+}
+
+.main-action {
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: #212121;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.128px;
+}
+
+.main-action--primary {
+  background: #ffd900;
+  font-weight: 600;
+}
+
+.main-action--completed {
+  color: #757575;
+  background: #ececec;
+  cursor: pointer;
+}
+
+.main-action:disabled:active {
+  transform: none;
+}
+
+.challenge-progress {
+  position: absolute;
+  top: 520px;
+  right: 20px;
+  left: 22px;
+  height: 122px;
+  overflow: hidden;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.challenge-progress h2 {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  margin: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.challenge-progress ol {
+  position: absolute;
+  top: 43px;
+  right: 11px;
+  left: 11px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  height: 69px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.challenge-progress li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #000;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.08px;
+}
+
+.challenge-progress__day {
+  height: 22px;
+  white-space: nowrap;
+}
+
+.challenge-check {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-top: 5px;
+}
+
+.challenge-check img {
+  position: absolute;
+  inset: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.challenge-progress__weight {
+  height: 22px;
+  margin-top: 1px;
+  color: #757575;
+  white-space: nowrap;
+}
+
+.main-board__records {
+  position: absolute;
+  top: 654px;
+  right: 20px;
+  left: 22px;
+  height: 42px;
+  padding: 0;
+  border: 1px dashed #ececec;
+  border-radius: 16px;
+  color: #757575;
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.208px;
+}
+
+.main-board__completion {
+  position: absolute;
+  top: 793px;
+  right: 20px;
+  left: 22px;
+}
+
+.main-board button:focus-visible {
+  outline: 3px solid #212121;
+  outline-offset: 2px;
+}
+
+.main-board button:active {
+  transform: scale(0.99);
+}
+
+@media (max-width: 600px) {
+  .main-board {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 374px) {
+  .coach-message {
+    right: 22px;
+  }
+
+  .coach-message p {
+    width: calc(100% - 43px);
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 11px;
+  }
+
+  .today-card strong,
+  .today-card span {
+    left: 9px;
+  }
+
+  .today-card strong {
+    font-size: 12px;
+  }
+
+  .today-card--promise > img {
+    right: 8px;
+  }
+}

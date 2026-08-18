@@ -1,0 +1,362 @@
+.habits-screen {
+  position: relative;
+  width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  aspect-ratio: 402 / 874;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  color: #212121;
+  background: #fff;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.habits-screen::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+ * The Figma frame is 402 × 874. Most of this screen is intentionally placed
+ * on that fixed vertical canvas, so keep the full canvas in the scroll area
+ * even when a device viewport is shorter than the design frame.
+ */
+.habits-screen::after {
+  display: block;
+  width: 1px;
+  height: 874px;
+  content: '';
+  pointer-events: none;
+}
+
+.habits-screen__status {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 50px;
+  pointer-events: none;
+}
+
+.habits-screen__status img {
+  position: absolute;
+}
+
+.habits-screen__time {
+  top: 12px;
+  left: 21px;
+  width: 54px;
+  height: 21px;
+}
+
+.habits-screen__notch {
+  top: -2px;
+  left: 50%;
+  width: 183px;
+  height: 30px;
+  transform: translateX(-50%);
+}
+
+.habits-screen__status-right {
+  top: 17px;
+  right: 15px;
+  width: 67px;
+  height: 12px;
+}
+
+.habits-screen__nav {
+  position: absolute;
+  top: 46px;
+  right: 17px;
+  left: 17px;
+  z-index: 1;
+  display: flex;
+  height: 40px;
+  align-items: center;
+}
+
+.habits-screen__nav button {
+  display: grid;
+  min-width: 28px;
+  height: 40px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  color: #ffd000;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.habits-screen__nav img {
+  width: 8px;
+  height: 14px;
+}
+
+.habits-screen__logo {
+  position: absolute;
+  top: 98px;
+  left: 24px;
+  width: 80px;
+  height: 32px;
+}
+
+.habits-screen__intro h1 {
+  position: absolute;
+  top: 178px;
+  left: 24px;
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: -0.34px;
+}
+
+.habits-screen__intro h1 span {
+  display: block;
+  white-space: nowrap;
+}
+
+.habits-screen__intro p {
+  position: absolute;
+  top: 286px;
+  right: 24px;
+  left: 24px;
+  margin: 0;
+  color: #757575;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.habits-screen__intro .habits-screen__error {
+  top: 310px;
+  color: #c62828;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.habits-screen__form {
+  position: absolute;
+  top: 332px;
+  right: 18px;
+  left: 18px;
+}
+
+.habits-screen fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.habits-screen legend {
+  width: 100%;
+  margin: 0 0 16px 6px;
+  padding: 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.14px;
+}
+
+.frequency-fieldset {
+  height: 150px;
+}
+
+.frequency-fieldset legend {
+  margin-bottom: 0;
+}
+
+.frequency-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  height: 36px;
+  padding-left: 31px;
+}
+
+.frequency-row > span {
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.112px;
+  white-space: nowrap;
+}
+
+.frequency-row > div {
+  display: grid;
+  grid-template-columns: repeat(3, 65px);
+  gap: 8px;
+  margin-right: 7px;
+}
+
+.habit-choice {
+  display: grid;
+  height: 28px;
+  min-width: 65px;
+  padding: 0 12px;
+  place-items: center;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.14px;
+  white-space: nowrap;
+}
+
+.habit-choice--selected {
+  border-color: #ffd000;
+  background: #fff5cc;
+}
+
+.amount-fieldset {
+  height: 82px;
+}
+
+.amount-fieldset legend,
+.situation-fieldset legend {
+  margin-bottom: 16px;
+}
+
+.situation-fieldset {
+  height: 82px;
+}
+
+.amount-fieldset > div,
+.situation-fieldset > div {
+  display: flex;
+  gap: 8px;
+  margin: 0 6px;
+}
+
+.amount-fieldset .habit-choice {
+  flex: 1;
+}
+
+.situation-fieldset .habit-choice {
+  min-width: 65px;
+}
+
+.weight-fieldset legend {
+  margin-bottom: 12px;
+}
+
+.weight-input {
+  position: relative;
+  display: block;
+  height: 50px;
+  margin: 0 3px;
+}
+
+.weight-input input {
+  width: 100%;
+  height: 100%;
+  padding: 0 52px 0 23px;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  outline: none;
+  color: #212121;
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.112px;
+  appearance: textfield;
+}
+
+.weight-input input::placeholder {
+  color: #757575;
+  opacity: 1;
+}
+
+.weight-input input::-webkit-inner-spin-button,
+.weight-input input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.weight-input input:focus-visible {
+  border-color: #ffd000;
+  outline: 3px solid rgba(255, 217, 0, 0.22);
+}
+
+.weight-input span {
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.112px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.habits-screen__submit {
+  position: absolute;
+  top: 764px;
+  right: 21px;
+  left: 21px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  color: #000;
+  background: #ffd900;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+
+.habits-screen button:focus-visible {
+  outline: 3px solid #212121;
+  outline-offset: 2px;
+}
+
+.habit-choice:active,
+.habits-screen__submit:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .habits-screen {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+  }
+}
+
+@media (max-width: 374px) {
+  .frequency-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding-left: 20px;
+  }
+
+  .frequency-row > div,
+  .amount-fieldset > div,
+  .situation-fieldset > div {
+    gap: 5px;
+  }
+
+  .frequency-row > div {
+    grid-template-columns: repeat(3, 56px);
+  }
+
+  .habit-choice {
+    min-width: 56px;
+    padding: 0 8px;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,424 @@
+.meal-screen {
+  position: relative;
+  width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  aspect-ratio: 402 / 874;
+  overflow: hidden;
+  color: #212121;
+  background: #fff;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.meal-screen button,
+.meal-screen input {
+  font-family: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.meal-screen--with-results {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.meal-screen--with-results::-webkit-scrollbar {
+  display: none;
+}
+
+.meal-screen__status {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 50px;
+  pointer-events: none;
+}
+
+.meal-screen__status img {
+  position: absolute;
+}
+
+.meal-screen__time {
+  top: 12px;
+  left: 21px;
+  width: 54px;
+  height: 21px;
+}
+
+.meal-screen__notch {
+  top: -2px;
+  left: 50%;
+  width: 183px;
+  height: 30px;
+  transform: translateX(-50%);
+}
+
+.meal-screen__status-right {
+  top: 17px;
+  right: 15px;
+  width: 67px;
+  height: 12px;
+}
+
+.meal-screen__topbar {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  left: 0;
+  height: 55px;
+}
+
+.meal-screen__topbar button {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+}
+
+.meal-screen__topbar img,
+.meal-option__chevron {
+  width: 8px;
+  height: 14px;
+}
+
+.meal-screen__intro {
+  position: absolute;
+  top: 134px;
+  left: 24px;
+}
+
+.meal-screen__intro h1 {
+  margin: 0;
+  color: #212121;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: -0.34px;
+}
+
+.meal-screen__intro p {
+  margin: 20px 0 0;
+  color: #757575;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.meal-screen--with-results .meal-screen__intro p {
+  margin-left: -3px;
+}
+
+.meal-screen__options {
+  position: absolute;
+  top: 234px;
+  left: 50%;
+  display: grid;
+  width: min(360px, calc(100% - 42px));
+  gap: 12px;
+  transform: translateX(-50%);
+}
+
+.meal-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  padding: 0 16px;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+
+.meal-option__icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+}
+
+.meal-option__copy {
+  display: flex;
+  min-width: 0;
+  margin-left: 25px;
+  flex-direction: column;
+}
+
+.meal-option__copy strong {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.meal-option__copy > span {
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.112px;
+}
+
+.meal-option__chevron {
+  position: absolute;
+  top: 28px;
+  right: 18px;
+  transform: rotate(180deg);
+}
+
+.meal-screen__favorites {
+  position: absolute;
+  top: 434px;
+  right: 24px;
+  left: 24px;
+}
+
+.meal-screen__favorites h2 {
+  margin: 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.14px;
+}
+
+.meal-screen__favorites > div {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.meal-screen__favorites button {
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: #000;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.14px;
+  white-space: nowrap;
+}
+
+.meal-screen__favorites button:nth-child(1),
+.meal-screen__favorites button:nth-child(2) {
+  width: 65px;
+}
+
+.meal-screen__favorites button:nth-child(3) {
+  width: 76px;
+}
+
+.meal-screen__favorites button:nth-child(4) {
+  width: 70px;
+}
+
+.meal-screen__results {
+  position: absolute;
+  top: 524px;
+  left: 50%;
+  display: grid;
+  width: min(360px, calc(100% - 42px));
+  padding-bottom: 32px;
+  gap: 12px;
+  transform: translateX(-50%);
+}
+
+.meal-result-card {
+  position: relative;
+  width: 100%;
+  height: 223px;
+  overflow: hidden;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.meal-result-card__score {
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  display: grid;
+  width: 63px;
+  height: 63px;
+  place-items: center;
+}
+
+.meal-result-card__score img {
+  position: absolute;
+  inset: 0;
+  width: 63px;
+  height: 63px;
+}
+
+.meal-result-card__score strong {
+  position: relative;
+  color: #000;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.224px;
+}
+
+.meal-result-card__heading {
+  position: absolute;
+  top: 28px;
+  left: 98px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 22px;
+}
+
+.meal-result-card__heading h2,
+.meal-result-card__heading span,
+.meal-result-card__description,
+.meal-result-card__balance {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.meal-result-card__heading h2 {
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.144px;
+}
+
+.meal-result-card__heading span,
+.meal-result-card__description,
+.meal-result-card__balance {
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.112px;
+}
+
+.meal-result-card__description {
+  position: absolute;
+  top: 58px;
+  left: 98px;
+  max-width: calc(100% - 116px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meal-result-card__divider {
+  position: absolute;
+  top: 99px;
+  left: 18px;
+  width: calc(100% - 36px);
+  height: 1px;
+}
+
+.meal-result-card__balance {
+  position: absolute;
+  top: 111px;
+  left: 24px;
+}
+
+.meal-result-card__balance strong {
+  color: #000;
+  font-weight: 600;
+}
+
+.meal-result-card__balance span {
+  letter-spacing: -0.128px;
+}
+
+.meal-result-card__actions {
+  position: absolute;
+  top: 157px;
+  right: 17px;
+  left: 17px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+  height: 42px;
+}
+
+.meal-result-card__actions button {
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: #212121;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.128px;
+}
+
+.meal-result-card__actions .meal-result-card__record {
+  background: #ffd900;
+}
+
+.meal-screen__summary {
+  margin: 4px 0 24px;
+  color: #757575;
+  font-size: 13px;
+  text-align: center;
+}
+
+.meal-screen button:focus-visible {
+  outline: 3px solid #212121;
+  outline-offset: 2px;
+}
+
+.meal-screen button:active {
+  transform: scale(0.99);
+}
+
+.meal-screen__topbar button:active {
+  transform: scale(0.94);
+}
+
+@media (max-width: 600px) {
+  .meal-screen {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+  }
+}
+
+@media (max-width: 340px) {
+  .meal-screen__intro h1 {
+    font-size: 31px;
+  }
+
+  .meal-screen__favorites > div {
+    gap: 5px;
+  }
+
+  .meal-screen__favorites button {
+    width: auto;
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+
+}

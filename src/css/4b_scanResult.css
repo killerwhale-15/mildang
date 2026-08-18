@@ -1,0 +1,363 @@
+.scan-result {
+  position: relative;
+  width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  aspect-ratio: 402 / 874;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  color: #212121;
+  background: #fff;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.scan-result::-webkit-scrollbar {
+  display: none;
+}
+
+.scan-result button,
+.scan-result input {
+  font-family: inherit;
+}
+
+.scan-result__status {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 50px;
+  pointer-events: none;
+}
+
+.scan-result__status img {
+  position: absolute;
+}
+
+.scan-result__time {
+  top: 12px;
+  left: 21px;
+  width: 54px;
+  height: 21px;
+}
+
+.scan-result__notch {
+  top: -2px;
+  left: 50%;
+  width: 183px;
+  height: 30px;
+  transform: translateX(-50%);
+}
+
+.scan-result__status-right {
+  top: 17px;
+  right: 15px;
+  width: 67px;
+  height: 12px;
+}
+
+.scan-result__brandbar {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  left: 0;
+  height: 73px;
+}
+
+.scan-result__logo {
+  position: absolute;
+  top: 1px;
+  left: 33px;
+  width: 78px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.scan-result__retake {
+  position: absolute;
+  top: 4px;
+  right: 18px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  color: #ffd900;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.scan-result__store {
+  position: absolute;
+  top: 132px;
+  right: 21px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 46px;
+}
+
+.scan-result__back {
+  display: grid;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+}
+
+.scan-result__back img {
+  width: 8px;
+  height: 14px;
+}
+
+.scan-result__store h1,
+.scan-result__store p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.scan-result__store h1 {
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.128px;
+}
+
+.scan-result__store p {
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.112px;
+}
+
+.scan-result__recommendation {
+  position: absolute;
+  top: 194px;
+  right: 21px;
+  left: 21px;
+  height: 208px;
+  overflow: hidden;
+  border: 1px solid #ffd900;
+  border-radius: 24px;
+  background: #fff5cc;
+}
+
+.scan-result__recommendation p,
+.scan-result__recommendation h2 {
+  position: absolute;
+  left: 22px;
+  margin: 0;
+}
+
+.scan-result__eyebrow {
+  top: 16px;
+  color: #757575;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.128px;
+}
+
+.scan-result__recommendation h2 {
+  top: 44px;
+  color: #000;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 28px;
+  letter-spacing: -0.192px;
+}
+
+.scan-result__recommendation .scan-result__advice {
+  top: 91px;
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.112px;
+}
+
+.scan-result__actions {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  left: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  height: 42px;
+}
+
+.scan-result__actions button {
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: #212121;
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.128px;
+}
+
+.scan-result__actions button:last-child {
+  background: #ffd900;
+}
+
+.scan-result__menu-section {
+  position: absolute;
+  top: 426px;
+  right: 21px;
+  left: 21px;
+}
+
+.scan-result__menu-section > h2 {
+  height: 22px;
+  margin: 0 0 4px 3px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.14px;
+}
+
+.scan-result__menu-list {
+  display: grid;
+  gap: 8px;
+}
+
+.scan-result__manual-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  margin-top: 12px;
+  padding: 0 4px 28px;
+  color: #757575;
+  font-size: 13px;
+}
+
+.scan-result__manual-input button {
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid #d8d8d8;
+  border-radius: 999px;
+  color: #212121;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.scan-result__menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  overflow: hidden;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.scan-result__menu.is-selected {
+  border-color: #ffd900;
+  background: #fff5cc;
+}
+
+.scan-result__score,
+.scan-result__score-input {
+  flex: 0 0 84px;
+  width: 84px;
+  height: 100%;
+  padding: 0 0 1px;
+  border: 0;
+  outline: 0;
+  color: #000;
+  background: transparent;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.224px;
+  text-align: center;
+}
+
+.scan-result__score {
+  cursor: text;
+}
+
+.scan-result__score-input {
+  appearance: textfield;
+}
+
+.scan-result__score-input::-webkit-inner-spin-button,
+.scan-result__score-input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.scan-result__menu-copy {
+  min-width: 0;
+  padding-bottom: 1px;
+}
+
+.scan-result__menu-copy h3,
+.scan-result__menu-copy p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.scan-result__menu-copy h3 {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.scan-result__menu-copy p {
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.112px;
+}
+
+.scan-result button:focus-visible,
+.scan-result input:focus-visible {
+  outline: 3px solid #212121;
+  outline-offset: 2px;
+}
+
+.scan-result button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .scan-result {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 374px) {
+  .scan-result__recommendation,
+  .scan-result__menu-section {
+    right: 16px;
+    left: 16px;
+  }
+
+  .scan-result__recommendation .scan-result__advice {
+    font-size: 13px;
+  }
+}

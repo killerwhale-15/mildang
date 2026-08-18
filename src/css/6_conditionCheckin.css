@@ -1,0 +1,267 @@
+.condition-checkin {
+  position: relative;
+  width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  aspect-ratio: 402 / 874;
+  overflow: hidden;
+  color: #212121;
+  background: #fff;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.condition-checkin button,
+.condition-checkin output {
+  font-family: inherit;
+}
+
+.condition-checkin__status {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 68px;
+  pointer-events: none;
+}
+
+.condition-checkin__status img {
+  position: absolute;
+}
+
+.condition-checkin__time {
+  top: 12px;
+  left: 21px;
+  width: 54px;
+  height: 21px;
+}
+
+.condition-checkin__notch {
+  top: -2px;
+  left: 50%;
+  width: 183px;
+  height: 30px;
+  transform: translateX(-50%);
+}
+
+.condition-checkin__status-right {
+  top: 17px;
+  right: 15px;
+  width: 67px;
+  height: 12px;
+}
+
+.condition-checkin__header {
+  position: absolute;
+  top: 68px;
+  right: 0;
+  left: 0;
+  height: 55px;
+}
+
+.condition-checkin__header img {
+  position: absolute;
+  top: 12px;
+  left: 24px;
+  width: 80px;
+  height: 32px;
+}
+
+.condition-checkin__intro {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.condition-checkin__intro p,
+.condition-checkin__intro h1,
+.condition-checkin__intro span {
+  position: absolute;
+  left: 24px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.condition-checkin__intro p {
+  top: 153px;
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.112px;
+}
+
+.condition-checkin__intro h1 {
+  top: 175px;
+  color: #212121;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 42px;
+  letter-spacing: -0.34px;
+}
+
+.condition-checkin__intro span {
+  top: 241px;
+  color: #757575;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.condition-checkin__form {
+  position: absolute;
+  top: 283px;
+  right: 21px;
+  left: 21px;
+  display: grid;
+  gap: 12px;
+}
+
+.condition-card {
+  position: relative;
+  height: 104px;
+  overflow: hidden;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.condition-card header {
+  position: absolute;
+  top: 16px;
+  right: 21px;
+  left: 21px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  height: 24px;
+}
+
+.condition-card h2,
+.condition-card p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.condition-card h2 {
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.144px;
+}
+
+.condition-card p {
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.112px;
+}
+
+.condition-card__choices {
+  position: absolute;
+  top: 51px;
+  right: 17px;
+  left: 17px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  height: 42px;
+}
+
+.condition-choice {
+  display: grid;
+  min-width: 0;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.16px;
+}
+
+.condition-choice--selected {
+  border-color: #ffd900;
+  background: #fff5cc;
+}
+
+.condition-choice:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.condition-checkin__submit {
+  position: absolute;
+  top: 651px;
+  right: 21px;
+  left: 21px;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  color: #000;
+  background: #ffd900;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+
+.condition-checkin__submit:disabled {
+  color: #9e9e9e;
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.condition-checkin__submit:disabled:active {
+  transform: none;
+}
+
+.condition-checkin button:focus-visible {
+  outline: 3px solid #212121;
+  outline-offset: 2px;
+}
+
+.condition-checkin button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .condition-checkin {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 374px) {
+  .condition-checkin__form {
+    right: 14px;
+    left: 14px;
+  }
+
+  .condition-checkin__submit {
+    right: 14px;
+    left: 14px;
+  }
+
+  .condition-card header {
+    right: 16px;
+    left: 16px;
+  }
+
+  .condition-card__choices {
+    right: 12px;
+    left: 12px;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,329 @@
+.record-a {
+  position: relative;
+  width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  aspect-ratio: 402 / 874;
+  overflow: hidden;
+  color: #212121;
+  background: #fff;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.record-a button {
+  font-family: inherit;
+}
+
+.record-a__status {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 50px;
+  pointer-events: none;
+}
+
+.record-a__status img {
+  position: absolute;
+}
+
+.record-a__time {
+  top: 12px;
+  left: 21px;
+  width: 54px;
+  height: 21px;
+}
+
+.record-a__notch {
+  top: -2px;
+  left: 50%;
+  width: 183px;
+  height: 30px;
+  transform: translateX(-50%);
+}
+
+.record-a__status-right {
+  top: 17px;
+  right: 15px;
+  width: 67px;
+  height: 12px;
+}
+
+.record-a__topbar {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  left: 0;
+  height: 55px;
+}
+
+.record-a__topbar button {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+}
+
+.record-a__topbar img {
+  width: 8px;
+  height: 14px;
+}
+
+.record-a__intro {
+  position: absolute;
+  top: 134px;
+  left: 24px;
+}
+
+.record-a__intro h1 {
+  margin: 0;
+  color: #212121;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: -0.34px;
+}
+
+.record-a__intro p {
+  margin: 20px 0 0;
+  color: #757575;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.128px;
+}
+
+.record-a__calendar-shell {
+  position: absolute;
+  top: 242px;
+  left: 22px;
+  width: 357px;
+  height: 394px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #ffd900;
+}
+
+.record-a__calendar {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 357px;
+  height: 370px;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.record-a__month-picker {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 7px 0;
+}
+
+.record-a__month-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 22px;
+}
+
+.record-a__month-label strong {
+  color: #000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Pretendard Variable',
+    Pretendard, system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  white-space: nowrap;
+}
+
+.record-a__month-label img {
+  width: 7px;
+  height: 12px;
+}
+
+.record-a__month-controls {
+  position: relative;
+  width: 51px;
+  height: 18px;
+}
+
+.record-a__month-controls img {
+  width: 51px;
+  height: 18px;
+  pointer-events: none;
+}
+
+.record-a__month-controls button {
+  position: absolute;
+  top: -13px;
+  width: 28px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.record-a__month-controls button:first-of-type {
+  left: -9px;
+}
+
+.record-a__month-controls button:last-of-type {
+  right: -9px;
+}
+
+.record-a__weekdays,
+.record-a__days {
+  position: absolute;
+  right: 16px;
+  left: 16px;
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  justify-content: space-between;
+}
+
+.record-a__weekdays {
+  top: 62px;
+  align-items: center;
+  height: 18px;
+  color: rgb(60 60 67 / 30%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Pretendard Variable',
+    Pretendard, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.078px;
+  text-align: center;
+}
+
+.record-a__days {
+  top: 85px;
+  grid-auto-rows: 40px;
+  row-gap: 6px;
+}
+
+.record-a__day {
+  position: relative;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #000;
+  background: transparent;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Pretendard Variable',
+    Pretendard, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0.38px;
+  place-items: center;
+}
+
+.record-a__day--has-record::after {
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffd900;
+  content: '';
+}
+
+.record-a__day--selected.record-a__day--has-record::after {
+  background: #fff;
+}
+
+.record-a__day--selected {
+  color: #fff;
+  background: #ffd900;
+  font-weight: 600;
+}
+
+.record-a__day--empty {
+  pointer-events: none;
+}
+
+.record-a__next {
+  position: absolute;
+  top: 764px;
+  left: 50%;
+  width: 360px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  color: #000;
+  background: #ffd900;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+  transform: translateX(-50%);
+}
+
+.record-a button:focus-visible {
+  outline: 3px solid #212121;
+  outline-offset: 2px;
+}
+
+.record-a button:active {
+  transform: scale(0.99);
+}
+
+.record-a__topbar button:active {
+  transform: scale(0.94);
+}
+
+.record-a__month-controls button:active,
+.record-a__day:active {
+  transform: scale(0.9);
+}
+
+.record-a button.record-a__next:active {
+  transform: translateX(-50%) scale(0.99);
+}
+
+@media (max-width: 600px) {
+  .record-a {
+    width: 100vw;
+    height: 100dvh;
+    aspect-ratio: auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .record-a__calendar-shell {
+    right: 21px;
+    left: 21px;
+    width: auto;
+  }
+
+  .record-a__calendar {
+    width: 100%;
+  }
+
+  .record-a__next {
+    width: calc(100% - 42px);
+  }
+
+  .record-a__weekdays,
+  .record-a__days {
+    grid-template-columns: repeat(7, minmax(36px, 40px));
+  }
+}

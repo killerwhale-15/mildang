@@ -1,0 +1,262 @@
+.demo-controls {
+  position: relative;
+  z-index: 10000;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.demo-controls__trigger {
+  --demo-app-width: min(402px, 100vw, calc(100dvh * 402 / 874));
+  --demo-app-height: calc(var(--demo-app-width) * 874 / 402);
+  position: fixed;
+  z-index: 10001;
+  top: calc((100dvh - var(--demo-app-height)) / 2 + 12px);
+  right: calc((100vw - var(--demo-app-width)) / 2 + 12px);
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #ededed;
+  border-radius: 50%;
+  background: #f5f5f5;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 7%);
+  cursor: pointer;
+}
+
+.demo-controls__trigger img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.72;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.demo-controls__trigger:hover img,
+.demo-controls__trigger[aria-expanded='true'] img {
+  opacity: 1;
+  transform: rotate(35deg);
+}
+
+.demo-controls__trigger:focus-visible,
+.demo-controls__panel button:focus-visible,
+.demo-controls__panel input:focus-visible {
+  outline: 3px solid #ffd900;
+  outline-offset: 2px;
+}
+
+.demo-controls__panel {
+  position: fixed;
+  z-index: 10000;
+  top: 72px;
+  right: 12px;
+  left: 12px;
+  max-height: calc(100dvh - 84px);
+  padding: 24px;
+  overflow: auto;
+  border: 1px solid #e8e8e8;
+  border-radius: 24px;
+  color: #212121;
+  background: #fff;
+  box-shadow: 0 20px 64px rgb(0 0 0 / 18%);
+}
+
+.demo-controls__header,
+.demo-controls__header-actions,
+.demo-controls__section-title,
+.demo-controls__login {
+  display: flex;
+  align-items: center;
+}
+
+.demo-controls__header {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.demo-controls__eyebrow {
+  margin: 0 0 3px;
+  color: #8f8f8f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.demo-controls__header h2,
+.demo-controls__section h3,
+.demo-controls__subheading,
+.demo-controls__help {
+  margin: 0;
+}
+
+.demo-controls__header h2 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.demo-controls__header-actions {
+  gap: 8px;
+}
+
+.demo-controls__account-badge {
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: #ffd900;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.demo-controls__close {
+  padding: 8px 10px;
+  border: 0;
+  color: #757575;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.demo-controls__section {
+  margin-top: 24px;
+}
+
+.demo-controls__section h3,
+.demo-controls__subheading {
+  color: #8a8a8a;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.demo-controls__login {
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.demo-controls__login input {
+  min-width: 0;
+  height: 52px;
+  flex: 1;
+  padding: 0 16px;
+  border: 1px solid #e4e4e4;
+  border-radius: 15px;
+  color: #212121;
+  background: #fff;
+  font: inherit;
+  font-size: 16px;
+}
+
+.demo-controls__login button,
+.demo-controls__pills button {
+  border: 0;
+  color: #212121;
+  background: #f3f3f3;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.demo-controls__login button {
+  height: 52px;
+  padding: 0 22px;
+  border-radius: 15px;
+  font-size: 15px;
+}
+
+.demo-controls__help {
+  margin-top: 8px;
+  color: #9a9a9a;
+  font-size: 13px;
+}
+
+.demo-controls__subheading {
+  margin-top: 18px;
+}
+
+.demo-controls__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.demo-controls__pills button {
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.demo-controls__login button:hover,
+.demo-controls__pills button:hover,
+.demo-controls__pills button.is-active {
+  background: #ffd900;
+}
+
+.demo-controls__login button:disabled,
+.demo-controls__pills button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.demo-controls__section-title {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.demo-controls__section-title span {
+  color: #9a9a9a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.demo-controls__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .demo-controls__trigger {
+    top: calc(env(safe-area-inset-top, 0px) + 12px);
+    right: calc(env(safe-area-inset-right, 0px) + 12px);
+    width: 44px;
+    height: 44px;
+  }
+
+  .demo-controls__panel {
+    top: 64px;
+    right: 8px;
+    left: 8px;
+    max-height: calc(100dvh - 72px);
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .demo-controls__header {
+    align-items: flex-start;
+  }
+
+  .demo-controls__account-badge {
+    display: none;
+  }
+
+  .demo-controls__login {
+    align-items: stretch;
+  }
+
+  .demo-controls__login button {
+    padding: 0 16px;
+  }
+
+  .demo-controls__pills {
+    gap: 8px;
+  }
+
+  .demo-controls__pills button {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+}
