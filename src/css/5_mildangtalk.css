@@ -118,42 +118,196 @@
   right: 21px;
   bottom: 250px;
   left: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 8px;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
-.mildang-talk__message {
-  position: relative;
-  min-height: 137px;
-  margin-bottom: 12px;
+.mildang-talk__conversation::-webkit-scrollbar {
+  display: none;
 }
 
-.mildang-talk__message > img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.mildang-talk__turn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mildang-talk__row {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+}
+
+.mildang-talk__row--user {
+  justify-content: flex-end;
+}
+
+.mildang-talk__avatar {
+  flex: 0 0 auto;
   width: 30px;
   height: 29px;
 }
 
-.mildang-talk__message p {
-  position: absolute;
-  top: 0;
-  left: 43px;
-  right: 0;
-  width: auto;
-  min-height: 100px;
-  height: auto;
+.mildang-talk__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  max-width: 78%;
+}
+
+.mildang-talk__row--user .mildang-talk__stack {
+  align-items: flex-end;
+}
+
+.mildang-talk__name {
+  color: #757575;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: -0.11px;
+}
+
+.mildang-talk__name--user {
+  color: #9a8300;
+}
+
+.mildang-talk__bubble {
   margin: 0;
-  padding: 14px;
+  padding: 12px 14px;
   overflow-wrap: anywhere;
-  border-radius: 16px;
-  color: #000;
-  background: #f5f5f5;
   font-size: 12px;
   font-weight: 500;
   line-height: 22px;
   letter-spacing: 0.096px;
   white-space: pre-line;
+}
+
+.mildang-talk__bubble--bot {
+  border-radius: 4px 16px 16px 16px;
+  color: #000;
+  background: #f5f5f5;
+}
+
+.mildang-talk__bubble--user {
+  border-radius: 16px 4px 16px 16px;
+  color: #212121;
+  background: #ffd900;
+}
+
+.mildang-talk__row--summary {
+  justify-content: center;
+}
+
+.mildang-talk__summary {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ffd900;
+  border-radius: 16px;
+  background: #fffdf0;
+}
+
+.mildang-talk__summary-title {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 0 0 10px;
+  color: #7a6700;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: -0.12px;
+}
+
+.mildang-talk__summary-title::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 99px;
+  background: #ffd900;
+}
+
+.mildang-talk__summary-rows {
+  margin: 0;
+}
+
+.mildang-talk__summary-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.mildang-talk__summary-row dt {
+  flex: 0 0 auto;
+  padding: 1px 6px;
+  border-radius: 6px;
+  color: #757575;
+  background: #f0ede1;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.mildang-talk__summary-row--after dt {
+  color: #212121;
+  background: #ffd900;
+}
+
+.mildang-talk__summary-row dd {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: baseline;
+  min-width: 0;
+  margin: 0;
+}
+
+.mildang-talk__summary-label {
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.12px;
+}
+
+.mildang-talk__summary-row--before .mildang-talk__summary-label {
+  color: #9e9e9e;
+  text-decoration: line-through;
+}
+
+.mildang-talk__summary-row--after .mildang-talk__summary-label {
+  color: #212121;
+  font-weight: 700;
+}
+
+.mildang-talk__summary-balance {
+  flex: 0 0 auto;
+  color: #757575;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.mildang-talk__summary-row--after .mildang-talk__summary-balance {
+  color: #7a6700;
+}
+
+.mildang-talk__summary-balance.is-overflow {
+  color: #e5484d;
+}
+
+.mildang-talk__summary-arrow {
+  margin: 2px 0 2px 12px;
+  color: #ffd900;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
 }
 
 .mildang-talk__composer {
@@ -291,15 +445,15 @@
     gap: 8px;
   }
 
-  .mildang-talk__message {
-    right: 16px;
-    left: 16px;
+  .mildang-talk__row {
+    gap: 9px;
   }
 
-  .mildang-talk__message p {
-    right: 0;
-    left: 39px;
-    width: auto;
+  .mildang-talk__stack {
+    max-width: 82%;
+  }
+
+  .mildang-talk__bubble {
     font-size: 11px;
   }
 
