@@ -32,7 +32,12 @@ function MetricIcon({ type }) {
 
 function CompleteReport({ error, isLoading = false, onBack, onShare, report, shareCard }) {
   return (
-    <main className="complete-report" data-screen-name="7_completeReport" aria-labelledby="complete-report-title">
+    <main className="complete-report" data-screen-name="7_completeReport" aria-labelledby="complete-report-title" style={{
+  height: '100dvh',
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  WebkitOverflowScrolling: 'touch',
+}}>
       <button
   className="complete-report__back"
   type="button"
