@@ -21,10 +21,7 @@ const weekdayLabels = {
   SUN: '일요일',
 }
 
-const figmaNoticeFallback = {
-  date: '2026.08.17',
-  message: '금요일 치킨 약속이 있어요',
-}
+const noticeEmptyMessage = '오늘은 약속이 없어요'
 
 function formatNoticeDate(value) {
   if (!value) return ''
@@ -97,12 +94,14 @@ function MainBoard({
     return { challengeDay, day: `${index + 1}일차`, completed: completedDaySet.has(challengeDay) }
   })
   const gauge = budget.gaugePercent ?? 0
-  const prepaid = dashboard?.prepaidItems?.[0]
-  const notice = dashboard?.todayNotification ?? dashboard?.notification ?? prepaid
+  const notice = dashboard?.todayNotification ?? dashboard?.notification ?? dashboard?.todayNotice
+  const noticePromise = notice?.promises?.[0] ?? dashboard?.prepaidItems?.[0]
   const noticeDate = formatNoticeDate(
-    notice?.date ?? notice?.logicalDate ?? notice?.scheduledDate,
-  ) || figmaNoticeFallback.date
-  const noticeMessage = getNoticeMessage(notice) || figmaNoticeFallback.message
+    notice?.date
+      ?? noticePromise?.date ?? noticePromise?.logicalDate ?? noticePromise?.scheduledDate
+      ?? dashboard?.today?.date,
+  )
+  const noticeMessage = getNoticeMessage(notice) || getNoticeMessage(noticePromise) || noticeEmptyMessage
   const tip = dashboard?.tip?.text?.trim() || (
     currentChallengeDay === 1
       ? '첫날이에요. 오늘 먹은 것부터 가볍게 기록해보세요.'
