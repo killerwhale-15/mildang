@@ -9,6 +9,10 @@
     BlinkMacSystemFont, system-ui, sans-serif;
 }
 
+.payment-screen::-webkit-scrollbar {
+  display: none;
+}
+
 .payment-screen__header {
   position: absolute;
   top: calc(env(safe-area-inset-top, 0px) + 18px);
@@ -274,14 +278,20 @@
 
 @media (max-width: 600px) {
   .payment-screen {
-    width: 100%;
-    height: auto;
-    min-height: 100dvh;
+    width: 100vw;
+    height: 100dvh;
+    min-height: 0;
     aspect-ratio: auto;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
   }
 
-  .payment-screen--two-week {
-    min-height: calc(100dvh + 120px);
+  .payment-screen::after {
+    display: block;
+    width: 1px;
+    height: calc(env(safe-area-inset-top, 0px) + 800px + env(safe-area-inset-bottom, 0px));
+    content: '';
+    pointer-events: none;
   }
 }
