@@ -26,7 +26,10 @@ function Budget({ error, estimate, isLoading = false, onContinue }) {
   const lastIndex = Math.max(0, options.length - 1)
   const safeIndex = Math.min(selectedIndex, lastIndex)
   const selected = options[safeIndex]
-  const budgetValue = Number(selected?.totalBudget ?? selected?.budget ?? 0)
+  // 서버에 보내는 값은 «주간값»(selected.budget)이다. totalBudget(기간 총액)을 보여주면
+  // 4주에서 주 500이 「2000밀」로 뜨는데, 정작 서버로는 500이 간다 — 화면과 요청이 서로
+  // 다른 값을 가리키게 된다(제보 2026-08-19). W1은 곱수가 1이라 이 어긋남이 안 보인다.
+  const budgetValue = Number(selected?.budget ?? 0)
   const progress = lastIndex === 0 ? 0 : (safeIndex / lastIndex) * 100
 
   if (!selected) {
