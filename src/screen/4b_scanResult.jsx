@@ -11,15 +11,28 @@ function StatusBar() {
   return <div className="scan-result__status" aria-hidden="true"><img className="scan-result__time" src={statusTime} alt="" /><img className="scan-result__notch" src={notch} alt="" /><img className="scan-result__status-right" src={statusRight} alt="" /></div>
 }
 
+function normalizeScanMenu(menu) {
+  const item = menu?.item
+  return {
+    ...menu,
+    itemId: item?.id ?? menu?.itemId,
+    name: item?.label ?? menu?.name ?? '메뉴',
+    points: item ? item.points : menu?.points,
+    basis: item?.basis ?? menu?.basis ?? '',
+    haggled: item?.haggled === true,
+  }
+}
+
 function toMenus(scan, manualItems) {
   return [
-    ...(scan?.menus ?? []),
+    ...(scan?.menus ?? []).map(normalizeScanMenu),
     ...manualItems.map((item) => ({
       ...getItemDisplay(item),
       id: `text-${item.id}`,
       itemId: item.id,
+      item,
     })),
-  ].sort((a, b) => a.points - b.points)
+  ].sort((a, b) => (a.points ?? 0) - (b.points ?? 0))
 }
 
 function ScanResult({ error, isLoading = false, manualItems = [], onBack, onChat, onOpenDirectInput, onRecord, onRetake, onUpdateMenu, scan }) {
@@ -37,9 +50,9 @@ function ScanResult({ error, isLoading = false, manualItems = [], onBack, onChat
     setEditingId(null)
     try {
       const updated = await onUpdateMenu?.(menuId, points)
-      if (updated) setMenus((items) => items.map((item) => item.id === menuId ? updated : item))
+      if (updated) setMenus((items) => items.map((item) => item.id === menuId ? normalizeScanMenu(updated) : item))
     } catch {
-      setMenus(scan?.menus ?? [])
+      setMenus(toMenus(scan, manualItems))
     }
   }
 

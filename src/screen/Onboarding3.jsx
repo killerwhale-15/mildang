@@ -17,15 +17,15 @@ const frequencyOptions = [
   { value: '0-1', label: '적음' },
 ]
 const amountOptions = [
-  { value: 'small', label: '조금 먹어요' },
-  { value: 'normal', label: '보통이에요' },
-  { value: 'large', label: '많이 먹어요' },
+  { value: 'SMALL', label: '조금 먹어요' },
+  { value: 'NORMAL', label: '보통이에요' },
+  { value: 'LARGE', label: '많이 먹어요' },
 ]
 const situationOptions = [
-  { value: 'meal', label: '식사' },
-  { value: 'snack', label: '간식' },
-  { value: 'late-night', label: '야식' },
-  { value: 'irregular', label: '불규칙' },
+  { value: 'MEAL', label: '식사' },
+  { value: 'SNACK', label: '간식' },
+  { value: 'LATE_NIGHT', label: '야식' },
+  { value: 'IRREGULAR', label: '불규칙' },
 ]
 
 function ChoiceButton({ selected, children, onClick }) {
@@ -44,10 +44,24 @@ function ChoiceButton({ selected, children, onClick }) {
 
 function Onboarding3({ error, isLoading = false, onBack, onContinue }) {
   const [survey, setSurvey] = useState({ noodle: '4+', bread: '4+', snack: '4+' })
-  const [details, setDetails] = useState({ amount: 'small', situation: 'meal', weight: '' })
+  const [details, setDetails] = useState({ amount: 'NORMAL', situation: 'MEAL', weight: '' })
+  const [localError, setLocalError] = useState('')
 
   function submitSurvey() {
-    onContinue(survey)
+    const weightText = details.weight.trim()
+    const weightKg = weightText === '' ? null : Number(weightText)
+    if (weightText !== '' && (!Number.isFinite(weightKg) || weightKg < 20 || weightKg > 300)) {
+      setLocalError('체중은 20kg부터 300kg 사이로 입력해주세요.')
+      return
+    }
+
+    setLocalError('')
+    onContinue({
+      ...survey,
+      amount: details.amount,
+      situation: details.situation,
+      ...(weightKg == null ? {} : { weightKg }),
+    })
   }
 
   return (
@@ -69,7 +83,7 @@ function Onboarding3({ error, isLoading = false, onBack, onContinue }) {
       <section className="habits-screen__intro">
         <h1 id="habits-title"><span>평소 식습관을</span><span>알려주세요</span></h1>
         <p>나에게 맞는 1주 예산을 추천해드릴게요.</p>
-        {error && <p className="habits-screen__error" role="alert">{error}</p>}
+        {(localError || error) && <p className="habits-screen__error" role="alert">{localError || error}</p>}
       </section>
 
       <section className="habits-screen__form" aria-label="식습관 입력">
@@ -130,8 +144,8 @@ function Onboarding3({ error, isLoading = false, onBack, onContinue }) {
               type="number"
               aria-label="현재 체중"
               inputMode="decimal"
-              min="1"
-              max="999"
+              min="20"
+              max="300"
               step="0.1"
               value={details.weight}
               placeholder="현재 체중을 입력해주세요"

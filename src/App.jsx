@@ -343,7 +343,8 @@ function App() {
   }
 
   async function createScanItem(menu) {
-    if (menu.itemId) return scanManualItems.find((item) => item.id === menu.itemId)
+    if (menu.item?.id) return menu.item
+    if (menu.itemId) return scanManualItems.find((item) => item.id === menu.itemId) ?? { id: menu.itemId, kind: 'MEAL' }
     const created = remember(await mildangApi.items.create({ kind: 'MEAL', scanId: scan.id, menuId: menu.id }))
     const item = created.item ?? created
     setMealItems((items) => [item, ...items])

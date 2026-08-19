@@ -39,6 +39,12 @@ function ProgressIndicator({ completed, current }) {
   )
 }
 
+function getCompletedCheckinDays(value) {
+  if (Array.isArray(value)) return value
+  if (!value || typeof value !== 'object') return []
+  return Array.from({ length: value.answered ?? 0 }, (_, index) => index + 1)
+}
+
 function Record_b({
   challenge,
   checkinDays = [],
@@ -50,7 +56,7 @@ function Record_b({
   const currentDay = challenge?.dayIndex ?? 1
   const currentWeek = Math.ceil(currentDay / 7)
   const firstDayOfWeek = (currentWeek - 1) * 7 + 1
-  const completedDays = new Set(Array.isArray(checkinDays) ? checkinDays : [])
+  const completedDays = new Set(getCompletedCheckinDays(checkinDays))
   const challengeDays = Array.from({ length: 7 }, (_, index) => ({
     day: index + 1,
     challengeDay: firstDayOfWeek + index,

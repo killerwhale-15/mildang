@@ -1,7 +1,12 @@
 import calendarIcon from '../img/calendar.svg'
+import chatIcon from '../img/chat.svg'
 import chevronLeft from '../img/chevron-left.svg'
+import feedbackIcon from '../img/feedback.svg'
 import mildangLogo from '../img/onboarding_logo_3x.png'
+import reportIcon from '../img/report.svg'
 import '../css/Onboarding2_1.css'
+
+const benefitIcons = [calendarIcon, feedbackIcon, reportIcon, chatIcon]
 
 const benefits = [
   { label: '이용 기간', value: '2주' },
@@ -27,7 +32,7 @@ function Onboarding2_1({ error, isDemo = false, isLoading = false, onBack, onCon
       <section className="payment-card" aria-label="2주 결제 정보">
         <div className="payment-card__heading"><h2>2주 챌린지</h2><span className="payment-card__badge">PLUS</span><strong>단기</strong><p>2주 동안 예산 관리해요</p></div>
         <div className="payment-card__benefits">
-          {benefits.map((benefit) => <div className="payment-card__benefit" key={benefit.label}><img src={calendarIcon} alt="" /><span>{benefit.label}</span><strong>{benefit.value}</strong></div>)}
+          {benefits.map((benefit, index) => <div className="payment-card__benefit" key={benefit.label}><img className={`payment-card__benefit-icon payment-card__benefit-icon--${index + 1}`} src={benefitIcons[index]} alt="" /><span>{benefit.label}</span><strong>{benefit.value}</strong></div>)}
         </div>
         <div className="payment-card__total"><span>결제 금액</span><strong>{price.toLocaleString()}원</strong></div>
       </section>

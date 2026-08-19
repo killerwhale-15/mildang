@@ -205,11 +205,22 @@
   display: flex;
   gap: 8px;
   margin-top: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.meal-screen__favorites > div::-webkit-scrollbar {
+  display: none;
 }
 
 .meal-screen__favorites button {
+  display: inline-flex;
+  flex: 0 0 auto;
   height: 32px;
-  padding: 0;
+  min-width: 0;
+  padding: 0 9px;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: 8px;
   color: #000;
@@ -224,15 +235,15 @@
 
 .meal-screen__favorites button:nth-child(1),
 .meal-screen__favorites button:nth-child(2) {
-  width: 65px;
+  width: auto;
 }
 
 .meal-screen__favorites button:nth-child(3) {
-  width: 76px;
+  width: auto;
 }
 
 .meal-screen__favorites button:nth-child(4) {
-  width: 70px;
+  width: auto;
 }
 
 .meal-screen__results {

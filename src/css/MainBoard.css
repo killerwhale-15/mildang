@@ -343,9 +343,66 @@
   transform: none;
 }
 
+.today-meals {
+  position: absolute;
+  top: 516px;
+  right: 20px;
+  left: 22px;
+  height: 72px;
+  overflow: hidden;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.today-meals header {
+  position: absolute;
+  top: 11px;
+  right: 14px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.today-meals h2,
+.today-meals p {
+  margin: 0;
+}
+
+.today-meals h2 {
+  color: #000;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.today-meals header span {
+  flex: 0 0 auto;
+  color: #757575;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.today-meals p {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  left: 16px;
+  overflow: hidden;
+  color: #757575;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .challenge-progress {
   position: absolute;
-  top: 520px;
+  top: 602px;
   right: 20px;
   left: 22px;
   height: 122px;
@@ -421,7 +478,7 @@
 
 .main-board__records {
   position: absolute;
-  top: 654px;
+  top: 738px;
   right: 20px;
   left: 22px;
   height: 42px;

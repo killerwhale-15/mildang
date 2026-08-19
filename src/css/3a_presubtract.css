@@ -10,7 +10,8 @@
 }
 
 .presubtract button,
-.presubtract input {
+.presubtract input,
+.presubtract select {
   font-family: inherit;
 }
 
@@ -141,6 +142,7 @@
 }
 
 .presubtract__form input,
+.presubtract__date-field select,
 .presubtract__menu-trigger {
   width: 100%;
   height: 50px;
@@ -156,6 +158,11 @@
   letter-spacing: -0.112px;
 }
 
+.presubtract__date-field select {
+  appearance: none;
+  cursor: pointer;
+}
+
 .presubtract__menu-trigger {
   display: flex;
   align-items: center;
@@ -165,9 +172,16 @@
 }
 
 .presubtract__menu-trigger strong {
+  flex: 0 0 auto;
   color: #757575;
   font-size: 12px;
   font-weight: 600;
+}
+
+.presubtract__menu-trigger span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .presubtract__form input::placeholder {
@@ -175,7 +189,8 @@
   opacity: 1;
 }
 
-.presubtract__form input:focus-visible {
+.presubtract__form input:focus-visible,
+.presubtract__date-field select:focus-visible {
   box-shadow: 0 0 0 2px #ffd900;
 }
 
@@ -263,47 +278,56 @@
   letter-spacing: 0.224px;
 }
 
+.presubtract__meal {
+  position: absolute;
+  top: 26px;
+  right: 18px;
+  left: 99px;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .presubtract__meal h2,
 .presubtract__meal span,
 .presubtract__meal p {
-  position: absolute;
   margin: 0;
   white-space: nowrap;
 }
 
 .presubtract__meal h2 {
-  top: 28px;
-  left: 99px;
   color: #000;
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
   letter-spacing: 0.144px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .presubtract__meal span {
-  top: 28px;
-  left: 158px;
   color: #757575;
   font-size: 14px;
   font-weight: 500;
-  line-height: 22px;
+  line-height: 20px;
   letter-spacing: 0.112px;
 }
 
 .presubtract__meal p {
-  top: 58px;
-  left: 99px;
+  margin-top: 2px;
   color: #757575;
   font-size: 14px;
   font-weight: 500;
   line-height: 22px;
   letter-spacing: 0.112px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .presubtract__card-divider {
   position: absolute;
-  top: 99px;
+  top: 104px;
   left: 18px;
   width: 324px;
   height: 1px;
@@ -311,7 +335,7 @@
 
 .presubtract__balance {
   position: absolute;
-  top: 111px;
+  top: 116px;
   left: 25px;
   margin: 0;
   color: #757575;

@@ -10,6 +10,7 @@
 }
 
 .condition-checkin button,
+.condition-checkin input,
 .condition-checkin output {
   font-family: inherit;
 }
@@ -105,6 +106,13 @@
   letter-spacing: 0.128px;
 }
 
+.condition-checkin__intro p[role='alert'] {
+  top: 258px;
+  right: 24px;
+  color: #c43b2f;
+  white-space: normal;
+}
+
 .condition-checkin__form {
   position: absolute;
   top: 283px;
@@ -195,9 +203,64 @@
   opacity: 0.6;
 }
 
+.condition-checkin__weight {
+  position: absolute;
+  top: 631px;
+  right: 21px;
+  left: 21px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  height: 58px;
+  padding: 0 16px;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.condition-checkin__weight span,
+.condition-checkin__weight strong {
+  color: #757575;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.condition-checkin__weight input {
+  min-width: 0;
+  height: 42px;
+  border: 0;
+  color: #212121;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: right;
+}
+
+.condition-checkin__weight input::placeholder {
+  color: #bdbdbd;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.condition-checkin__weight input::-webkit-inner-spin-button,
+.condition-checkin__weight input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.condition-checkin__weight input:focus-visible {
+  outline: 0;
+}
+
+.condition-checkin__weight:focus-within {
+  border-color: #ffd900;
+}
+
 .condition-checkin__submit {
   position: absolute;
-  top: 651px;
+  top: 711px;
   right: 21px;
   left: 21px;
   height: 48px;
@@ -250,6 +313,11 @@
   }
 
   .condition-checkin__submit {
+    right: 14px;
+    left: 14px;
+  }
+
+  .condition-checkin__weight {
     right: 14px;
     left: 14px;
   }

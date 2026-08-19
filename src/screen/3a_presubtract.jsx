@@ -22,6 +22,7 @@ function StatusBar() {
 function PreSubtract({ error, isLoading = false, item, onBack, onOpenDirectInput, onPrepay, onStartChat }) {
   const [weekday, setWeekday] = useState(item?.weekday ?? 'FRI')
   const meal = item ? getItemDisplay(item) : null
+  const mealMeta = meal ? [meal.unit, `${meal.points}밀`].filter(Boolean).join(' ') : ''
 
   return (
     <main className="presubtract" aria-labelledby="presubtract-title">
@@ -36,6 +37,7 @@ function PreSubtract({ error, isLoading = false, item, onBack, onOpenDirectInput
           <select id="presubtract-date" value={weekday} onChange={(event) => setWeekday(event.target.value)}>
             {weekdays.map(([value, label]) => <option value={value} key={value}>{label}</option>)}
           </select>
+          <img src={chevronLeft} alt="" />
         </div>
         <label id="presubtract-menu-label">뭘 먹기로 했어요?</label>
         <button className="presubtract__menu-trigger" type="button" onClick={() => onOpenDirectInput?.({ weekday })} aria-labelledby="presubtract-menu-label">
@@ -47,9 +49,11 @@ function PreSubtract({ error, isLoading = false, item, onBack, onOpenDirectInput
       {item ? (
         <article className="presubtract__preview" aria-label="차감 예상 내역">
           <div className="presubtract__score" aria-label={`${meal?.points ?? 0}밀`}><img src={scoreBackground} alt="" /><strong>{meal?.points ?? 0}</strong></div>
-          <div className="presubtract__meal"><h2>{meal?.name}</h2><span>{meal?.unit} · {meal?.points}밀</span><p>{meal?.basis}</p></div>
+          <div className="presubtract__meal"><h2>{meal?.name}</h2><span>{mealMeta}</span><p>{meal?.basis}</p></div>
           <img className="presubtract__card-divider" src={cardDivider} alt="" />
-          <p className="presubtract__balance">상태 <strong>{item.status}</strong></p>
+          <p className="presubtract__balance">
+            {meal?.balanceAfter == null ? <>상태 <strong>{item.status}</strong></> : <>기록하면 잔액 <strong>{meal.balanceAfter}밀</strong></>}
+          </p>
           <div className="presubtract__actions">
             <button type="button" onClick={() => onStartChat?.(item)}>밀당하기</button>
             <button className="presubtract__subtract" type="button" disabled={isLoading || item.status === 'PREPAID'} onClick={() => onPrepay?.(item)}>{item.status === 'PREPAID' ? '선결제 완료' : '미리 차감하기'}</button>

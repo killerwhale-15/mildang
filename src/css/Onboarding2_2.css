@@ -199,9 +199,20 @@
   letter-spacing: 0.128px;
 }
 
-.payment-card__benefit img {
+.payment-card__benefit-icon {
+  display: block;
   width: 24px;
   height: 24px;
+}
+
+.payment-card__benefit-icon--2 {
+  width: 23px;
+  height: 23px;
+}
+
+.payment-card__benefit-icon--3,
+.payment-card__benefit-icon--4 {
+  height: 22px;
 }
 
 .payment-card__benefit strong {

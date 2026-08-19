@@ -104,11 +104,13 @@ export const mildangApi = {
 
   checkins: {
     today: () => request('/checkins/today'),
-    save: (answers) =>
-      request('/checkins/today', {
+    save: (payload) => {
+      const body = payload?.answers ? payload : { answers: payload }
+      return request('/checkins/today', {
         method: 'PUT',
-        body: { answers },
-      }),
+        body,
+      })
+    },
   },
 
   invites: {

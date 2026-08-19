@@ -51,6 +51,14 @@ function StatusBar() {
   return <div className="main-board__status" aria-hidden="true"><img className="main-board__time" src={statusTime} alt="" /><img className="main-board__notch" src={notch} alt="" /><img className="main-board__status-right" src={statusRight} alt="" /></div>
 }
 
+function getCompletedCheckinDays(value, currentChallengeDay) {
+  if (Array.isArray(value)) return value
+  if (!value || typeof value !== 'object') {
+    return Array.from({ length: Math.max(0, currentChallengeDay - 1) }, (_, index) => index + 1)
+  }
+  return Array.from({ length: value.answered ?? 0 }, (_, index) => index + 1)
+}
+
 function ChallengeCheck({ completed }) {
   return <span className="challenge-check" aria-label={completed ? '완료' : '미완료'}><img src={completed ? checkBase : uncheckedBase} alt="" /><img src={completed ? checkMark : uncheckedMark} alt="" /></span>
 }
@@ -76,9 +84,7 @@ function MainBoard({
   const totalChallengeDays = challengeWeeks * 7
   const isChallengeLastDay = currentChallengeDay >= totalChallengeDays
   const suppliedCheckinDays = dashboard?.checkin?.checkinDays
-  const checkinDays = Array.isArray(suppliedCheckinDays)
-    ? suppliedCheckinDays
-    : Array.from({ length: Math.max(0, currentChallengeDay - 1) }, (_, index) => index + 1)
+  const checkinDays = getCompletedCheckinDays(suppliedCheckinDays, currentChallengeDay)
   const completedDaySet = new Set(checkinDays)
   if (dashboard?.checkin?.doneToday) completedDaySet.add(currentChallengeDay)
   const isTodayCompleted = completedDaySet.has(currentChallengeDay)
@@ -99,6 +105,11 @@ function MainBoard({
       ? '첫날이에요. 오늘 먹은 것부터 가볍게 기록해보세요.'
       : '오늘 기록을 남기면 내일 더 정확한 흐름을 알려드릴게요.'
   )
+  const today = dashboard?.today
+  const todayItems = today?.items ?? []
+  const todaySummary = today
+    ? `${today.count ?? todayItems.length}건 · ${today.totalPoints ?? 0}밀`
+    : '0건 · 0밀'
 
   return (
     <main className="main-board" aria-labelledby="main-board-title">
@@ -134,6 +145,13 @@ function MainBoard({
       <section className="main-board__actions" aria-label="오늘의 기록">
         <button className="main-action main-action--primary" type="button" onClick={onMealClick}>식사 기록하기</button>
         <button className={`main-action${isTodayCompleted ? ' main-action--completed' : ''}`} type="button" onClick={onConditionCheckin}>{isTodayCompleted ? '체크인 수정' : '컨디션 체크인'}</button>
+      </section>
+
+      <section className="today-meals" aria-labelledby="today-meals-title">
+        <header><h2 id="today-meals-title">오늘 먹은 것</h2><span>{todaySummary}</span></header>
+        {todayItems.length > 0
+          ? <p>{todayItems.slice(0, 2).map((item) => `${item.label ?? item.name} ${item.points}밀`).join(' · ')}</p>
+          : <p>아직 기록된 식사가 없어요.</p>}
       </section>
 
       <section className="challenge-progress" aria-labelledby="challenge-progress-title">

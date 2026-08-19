@@ -17,18 +17,26 @@ function MealOption({ icon, title, description, onClick }) {
   return <button className="meal-option" type="button" onClick={onClick}><img className="meal-option__icon" src={icon} alt="" /><span className="meal-option__copy"><strong>{title}</strong><span>{description}</span></span><img className="meal-option__chevron" src={backChevron} alt="" /></button>
 }
 
+const ITEM_STATUS_LABELS = {
+  HAGGLED: '조정 완료',
+  PENDING: '기록 대기',
+  PREPAID: '미리 차감됨',
+  RECORDED: '기록 완료',
+}
+
 function MealResultCard({ item, onBargain, onDelete, onRecord }) {
   const meal = getItemDisplay(item)
+  const statusLabel = ITEM_STATUS_LABELS[item.status] ?? '확인 필요'
   return (
     <article className="meal-result-card">
       <div className="meal-result-card__score" aria-label={`${meal.points ?? 0}밀`}><img src={resultBadge} alt="" /><strong>{meal.points ?? 0}</strong></div>
       <div className="meal-result-card__heading"><h2>{meal.name}</h2><span>{meal.unit} · 신뢰도 {meal.confidence}</span></div>
       <p className="meal-result-card__description">{meal.basis}</p><img className="meal-result-card__divider" src={resultDivider} alt="" />
-      <p className="meal-result-card__balance">상태 <strong>{item.status}</strong></p>
+      <p className="meal-result-card__balance">{meal.balanceAfter == null ? <>상태 <strong>{statusLabel}</strong></> : <>기록하면 잔액 <strong>{meal.balanceAfter}밀</strong></>}</p>
       <div className="meal-result-card__actions">
         <button type="button" disabled={!['PENDING', 'HAGGLED'].includes(item.status)} onClick={() => onBargain?.(item)}>밀당하기</button>
         <button className="meal-result-card__record" type="button" disabled={!['PENDING', 'HAGGLED'].includes(item.status)} onClick={() => onRecord?.(item)}>기록하기</button>
-        {item.status === 'PENDING' && <button type="button" onClick={() => onDelete?.(item)}>삭제</button>}
+        {['PENDING', 'HAGGLED'].includes(item.status) && <button type="button" onClick={() => onDelete?.(item)}>삭제</button>}
       </div>
     </article>
   )
