@@ -1,5 +1,4 @@
 import {
-  applyDemoCompletedReportSeed,
   applyDemoDashboardSeed,
   DEMO_JUDGE_SEEDS,
   getDemoJudgeScenario,
@@ -30,16 +29,11 @@ for (const [account, seed] of Object.entries(DEMO_JUDGE_SEEDS)) {
   }
 }
 
-const completed = DEMO_JUDGE_SEEDS['demo-judge-03'].report
-const completedResponse = applyDemoCompletedReportSeed({ challenge: { id: 'challenge-from-api' } })
-if (
-  completed.stats[0].value !== '78' ||
-  completed.finding.sample.answeredDays !== 6 ||
-  completed.haggleHighlight.totalSaved !== 132 ||
-  completedResponse.challenge.id !== 'challenge-from-api' ||
-  completedResponse.stats[0].value !== '78'
-) {
-  throw new Error('demo-judge-03 완주 리포트 명세 불일치')
+// 완주 리포트는 로컬 시드를 두지 않습니다 — 화면이 GET /challenges/{id}/report의
+// completion 블록을 그대로 그리므로, 여기서 검증할 로컬 값이 없습니다.
+const completedSeed = DEMO_JUDGE_SEEDS['demo-judge-03']
+if (completedSeed.scenario !== 'COMPLETED' || completedSeed.challenge.status !== 'COMPLETED') {
+  throw new Error('demo-judge-03 완주 시나리오 불일치')
 }
 
 for (const seed of Object.values(DEMO_JUDGE_SEEDS).filter((entry) => entry.budget)) {

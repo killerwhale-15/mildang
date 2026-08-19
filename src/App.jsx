@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react'
 import { DEMO_ACCOUNT, IS_DEMO, PAYMENT_PROVIDER } from './api/config.js'
-import {
-  applyDemoCompletedReportSeed,
-  applyDemoDashboardSeed,
-  getDemoJudgeScenario,
-} from './api/demoAccounts.js'
+import { applyDemoDashboardSeed, getDemoJudgeScenario } from './api/demoAccounts.js'
 import { getDemoMealsForDate, getDemoRecordView, getRecordedItemsView } from './api/demoRecordView.js'
 import { renderDemoShareCard } from './api/demoShareCard.js'
 import { mildangApi } from './api/mildangApi.js'
@@ -400,11 +396,8 @@ function App() {
     } catch (requestError) { fail(requestError) } finally { setBusy('') }
   }
 
-  async function loadReport(id = challengeId, seedScenario) {
-    const reportResponse = remember(await mildangApi.challenges.report(id))
-    const response = IS_DEMO && seedScenario === 'COMPLETED'
-      ? applyDemoCompletedReportSeed(reportResponse)
-      : reportResponse
+  async function loadReport(id = challengeId) {
+    const response = remember(await mildangApi.challenges.report(id))
     setReport(response); return response
   }
 
@@ -429,7 +422,7 @@ function App() {
     if (scenario === 'FRESH') {
       setDashboard(null); setScreen('onboarding2')
     } else if (scenario === 'COMPLETED') {
-      await loadReport(seeded.challengeId, scenario); setScreen('7_completeReport')
+      await loadReport(seeded.challengeId); setScreen('7_completeReport')
     } else {
       await loadDashboard(scenario); setScreen('mainBoard')
     }
@@ -471,7 +464,7 @@ function App() {
   else if (screen === '3a_presubtract') content = <PreSubtract error={error} isLoading={Boolean(busy)} item={promiseItems[0]} onBack={() => setScreen('mainBoard')} onOpenDirectInput={(options) => openDirectInput('3a_presubtract', options)} onPrepay={handlePrepay} onStartChat={(item) => startHaggle(item, 'PROMISE', '3a_presubtract')} />
   else if (screen === '5_mildangtalk') content = <MildangTalk error={error} session={haggle?.session} onAbandon={handleHaggleAbandon} onClose={handleHaggleClose} onEnd={() => setScreen(haggle?.origin ?? 'mainBoard')} onSend={handleHaggleMessage} />
   else if (screen === '6_conditionCheckin') content = <ConditionCheckin checkin={checkin} error={error} isFetching={busy === 'checkin'} isLoading={busy === 'checkin-save'} onBack={() => setScreen('mainBoard')} onComplete={handleCheckin} />
-  else if (screen === '7_completeReport') content = <CompleteReport error={error} isLoading={busy === 'share'} onBack={() => setScreen('mainBoard')} onShare={handleShare} report={report} shareCard={shareCard} />
+  else if (screen === '7_completeReport') content = <CompleteReport error={error} isLoading={busy === 'share'} isReportLoading={busy === 'report'} onBack={() => setScreen('mainBoard')} onShare={handleShare} report={report} shareCard={shareCard} />
   else if (screen === 'record_a') content = <RecordA initialDate={selectedRecordDate ?? currentRecordView?.initialDate} recordDates={currentRecordView?.recordDates} onBack={() => setScreen('mainBoard')} onNext={(date) => { setSelectedRecordDate(date); setScreen('record_b') }} />
   else if (screen === 'record_b') content = <RecordB challenge={dashboard?.challenge ?? currentRecordView?.challenge} checkinDays={dashboard?.checkin?.checkinDays ?? currentRecordView?.checkinDays} mealRecords={getDemoMealsForDate(currentRecordView, selectedRecordDate)} selectedDate={selectedRecordDate} onBack={() => setScreen('record_a')} />
   else content = <><MainBoard dashboard={dashboard} onMealClick={openMeal} onOpenPreSubtract={openPromise} onOpenRecords={openRecords} onConditionCheckin={openCheckin} onChallengeComplete={openReport} />{dashboard?.expiredConfirm?.[0] && <aside role="dialog" aria-modal="true" style={{ position: 'fixed', zIndex: 9998, left: 20, right: 20, bottom: 20, padding: 20, borderRadius: 20, background: '#fff', boxShadow: '0 8px 40px #0004' }}><p>{dashboard.expiredConfirm[0].question}</p><button type="button" onClick={() => handleRecord({ id: dashboard.expiredConfirm[0].id })}>드셨어요</button><button type="button" onClick={() => handleDelete({ id: dashboard.expiredConfirm[0].id })}>안 먹었어요</button></aside>}</>

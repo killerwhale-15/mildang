@@ -34,30 +34,6 @@ export const DEMO_JUDGE_SEEDS = {
     challenge: { period: 'W1', optionKey: 'AS_IS', budget: 85, dayIndex: 7, totalDays: 7, status: 'COMPLETED' },
     records: [],
     prepaidItems: [],
-    report: {
-      challenge: { period: 'W1', label: '1주 챌린지 · 완주' },
-      title: '당신의 몸이 쓴 리포트',
-      stats: [
-        { key: 'TOTAL_SPENT', label: '총 소비', value: '78', sub: '/85' },
-        { key: 'VS_BUDGET', label: '예산 대비', value: '−7', sub: null },
-        { key: 'PEAK_SLOT', label: '최다 소비', value: '금 저녁', sub: null },
-      ],
-      finding: {
-        available: true,
-        headline: '밀가루 40+ 섭취한 다음날, 더부룩함 보고율 2.4배',
-        metric: { conditionKey: 'BLOAT', thresholdPoints: 40, ratio: 2.4 },
-        sampleNote: '응답 6/7일 · 표본이 작아 경향으로 읽어주세요',
-        sample: { answeredDays: 6, totalDays: 7 },
-      },
-      haggleHighlight: {
-        totalSaved: 132,
-        best: { menu: '라면', originalLabel: '1봉지 80', adjustedLabel: '반봉지 + 계란 40', savedPoints: 40, when: '수요일 저녁' },
-        avgTurns: 4.2,
-        longestTurns: 9,
-      },
-      disclaimer: '이 리포트는 의학적 진단이 아닌 본인 기록 기반 관찰입니다.',
-      nextChallenge: { period: 'W1', optionKey: 'HARD', suggestedBudget: 75, ctaLabel: '재대결 받기 · 이번엔 75' },
-    },
   },
   'demo-judge-04': {
     token: 'demo-judge-04',
@@ -123,14 +99,5 @@ export function applyDemoDashboardSeed(dashboard, scenario) {
       note: '사전 결제 · 예산에서 미리 빼뒀어요',
       ...item,
     })),
-  }
-}
-
-export function applyDemoCompletedReportSeed(report) {
-  const seededReport = DEMO_JUDGE_SEEDS['demo-judge-03'].report
-  return {
-    ...report,
-    ...seededReport,
-    challenge: { ...report?.challenge, ...seededReport.challenge },
   }
 }

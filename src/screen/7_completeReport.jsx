@@ -12,12 +12,8 @@ import utensilRight from '../img/complete-report-utensil-right.svg'
 import '../css/7_completeReport.css'
 
 
-const bodyMetrics = [
-  { key: 'weight', label: '몸무게 변화', value: '59kg → 53kg', icon: 'scale' },
-  { key: 'bloat', label: '붓기 효과', value: '보통 → 좋음', icon: 'sparkle' },
-  { key: 'skin', label: '피부 트러블', value: '3회 → 1회', icon: 'leaf' },
-  { key: 'drowsy', label: '식곤증 개선', value: '18% 감소', icon: 'utensils' },
-]
+const METRIC_ICON_BY_KEY = { WEIGHT: 'scale', BLOAT: 'sparkle', SKIN: 'leaf', DROWSY: 'utensils' }
+const INTRO_BY_PERIOD = { W1: '1주간의 변화를 한 장에 담았어요', W2: '2주간의 변화를 한 장에 담았어요', W4: '4주간의 변화를 한 장에 담았어요' }
 
 function MetricIcon({ type }) {
   return (
@@ -31,25 +27,32 @@ function MetricIcon({ type }) {
   )
 }
 
-function CompleteReport({ error, isLoading = false, onBack, onShare, report, shareCard }) {
+function CompleteReport({ error, isLoading = false, isReportLoading = false, onBack, onShare, report, shareCard }) {
+  const completion = report?.completion
+  const bodyChanges = completion?.bodyChanges ?? []
+  const usedPercent = completion?.usedPercent
+  const introText = INTRO_BY_PERIOD[report?.challenge?.period] ?? '챌린지 기간의 변화를 한 장에 담았어요'
+
   return (
     <main className="complete-report" data-screen-name="7_completeReport" aria-labelledby="complete-report-title">
       <button className="complete-report__back" type="button" onClick={onBack} aria-label="메인보드로 돌아가기"><img src={chevronLeft} alt="" /></button>
-      <header className="complete-report__intro"><h1 id="complete-report-title">당신의 결과를 공유해보세요</h1><p>2주간의 변화를 한 장에 담았어요</p>{error && <p role="alert">{error}</p>}</header>
-      <section className="report-card" aria-labelledby="report-card-title">
+      <header className="complete-report__intro"><h1 id="complete-report-title">당신의 결과를 공유해보세요</h1><p>{introText}</p>{error && <p role="alert">{error}</p>}</header>
+      <section className="report-card" aria-labelledby="report-card-title" aria-busy={isReportLoading}>
         <div className="report-card__motif" aria-hidden="true"><span className="report-card__motif-dish" /><span className="report-card__motif-base" /><img src={accentCircle} alt="" /></div>
         <p className="report-card__brand" aria-label="밀당">밀당</p><p className="report-card__tag">#밀가루 끊기 챌린지</p>
-        <div className="report-card__title-block"><p>2주 챌린지 완주 🎉</p><h2 id="report-card-title">이번 주 밀당 성공 !</h2><img src={titleUnderline} alt="" /></div>
-        <div className="report-card__usage"><p>밀가루 예산의</p><strong>70%</strong><span>만 사용했어요</span></div>
-        <h3 className="report-card__metrics-title">내 몸의 변화</h3>
-        <div className="report-card__metrics">
-          <img className="report-card__grid-horizontal" src={gridHorizontal} alt="" aria-hidden="true" />
-          <img className="report-card__grid-vertical" src={gridVertical} alt="" aria-hidden="true" />
-          {bodyMetrics.map((metric) => <article className="report-metric" key={metric.key}><MetricIcon type={metric.icon} /><h4>{metric.label}</h4><p>{metric.value}</p></article>)}
-        </div>
-        <p className="report-card__summary">처음 52에서 시작해, 30을 남기고 완주했어요!</p>
+        <div className="report-card__title-block"><p>{completion?.periodLabel ?? report?.challenge?.label ?? ''}</p><h2 id="report-card-title">{completion?.headline ?? report?.title ?? (isReportLoading ? '리포트를 불러오는 중이에요' : '')}</h2><img src={titleUnderline} alt="" /></div>
+        {usedPercent != null && <div className="report-card__usage"><p>밀가루 예산의</p><span className="report-card__usage-value"><strong>{usedPercent}%</strong><span>{usedPercent > 100 ? '나 사용했어요' : '만 사용했어요'}</span></span></div>}
+        {bodyChanges.length > 0 && <>
+          <h3 className="report-card__metrics-title">내 몸의 변화</h3>
+          <div className="report-card__metrics">
+            <img className="report-card__grid-horizontal" src={gridHorizontal} alt="" aria-hidden="true" />
+            <img className="report-card__grid-vertical" src={gridVertical} alt="" aria-hidden="true" />
+            {bodyChanges.slice(0, 4).map((metric) => <article className="report-metric" key={metric.key}><MetricIcon type={METRIC_ICON_BY_KEY[metric.key]} /><h4>{metric.label}</h4><p>{metric.value ?? metric.note ?? '기록이 모자라요'}</p></article>)}
+          </div>
+        </>}
+        {completion?.summaryLine && <p className="report-card__summary">{completion.summaryLine}</p>}
       </section>
-      <button className="complete-report__share" type="button" onClick={onShare} disabled={isLoading}>{isLoading ? '공유 카드 생성 중…' : '스토리에 공유하기'}</button>
+      <button className="complete-report__share" type="button" onClick={onShare} disabled={isLoading || isReportLoading || !report}>{isLoading ? '공유 카드 생성 중…' : '스토리에 공유하기'}</button>
       {shareCard && <a href={shareCard.imageUrl} target="_blank" rel="noreferrer">공유 카드 열기 · {shareCard.hashtag}</a>}
     </main>
   )

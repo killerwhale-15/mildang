@@ -96,6 +96,21 @@ const completedReport = {
   haggleHighlight: { totalSaved: 132, best: { menu: '라면', originalLabel: '1봉지 80', adjustedLabel: '반봉지 + 계란 40', savedPoints: 40, when: '수요일 저녁' }, avgTurns: 4.2, longestTurns: 9 },
   disclaimer: '이 리포트는 의학적 진단이 아닌 본인 기록 기반 관찰입니다.',
   nextChallenge: { period: 'W1', optionKey: 'HARD', suggestedBudget: 75, ctaLabel: '재대결 받기 · 이번엔 75' },
+  completion: {
+    periodLabel: '1주 챌린지 완주 🎉',
+    headline: '이번 판 밀당 성공 !',
+    usedPercent: 92,
+    totalBudget: 85,
+    spent: 78,
+    leftover: 7,
+    summaryLine: '처음 85에서 시작해, 7을 남기고 완주했어요!',
+    bodyChanges: [
+      { key: 'WEIGHT', label: '체중 변화', value: '58kg → 54kg', note: '4.0kg 줄었어요' },
+      { key: 'BLOAT', label: '붓기 효과', value: '보통 → 좋음', note: null },
+      { key: 'SKIN', label: '피부 트러블', value: '3회 → 1회', note: null },
+      { key: 'DROWSY', label: '식곤증 개선', value: '18% 개선', note: null },
+    ],
+  },
 }
 
 let createdKind = 'MEAL'

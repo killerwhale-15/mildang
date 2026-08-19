@@ -127,38 +127,42 @@
   z-index: 1;
 }
 
-.report-card__usage p,
-.report-card__usage strong,
-.report-card__usage span {
-  position: absolute;
-  white-space: nowrap;
-}
-
 .report-card__usage p {
+  position: absolute;
   top: 200px;
   left: 23px;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
   letter-spacing: -0.16px;
+  white-space: nowrap;
 }
 
-.report-card__usage strong {
+/* 숫자 폭이 usedPercent 값에 따라 달라지므로(9% ~ 100%+) 뒷말을 붙여 흘립니다. */
+.report-card__usage-value {
+  position: absolute;
   top: 218px;
   left: 23px;
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+.report-card__usage-value strong {
   font-size: 70px;
   font-weight: 600;
   line-height: 80px;
   letter-spacing: -0.7px;
+  white-space: nowrap;
 }
 
-.report-card__usage span {
-  top: 264px;
-  left: 176px;
+.report-card__usage-value span {
+  padding-bottom: 10px;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
   letter-spacing: -0.16px;
+  white-space: nowrap;
 }
 
 .report-card__motif {
