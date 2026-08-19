@@ -281,14 +281,7 @@
     overflow: visible;
   }
 
-  .payment-screen--four-week {
-    min-height: max(
-      100dvh,
-      calc(
-        790px +
-        env(safe-area-inset-top, 0px) +
-        env(safe-area-inset-bottom, 0px)
-      )
-    );
+  .payment-screen--two-week {
+    min-height: calc(100dvh + 120px);
   }
 }
