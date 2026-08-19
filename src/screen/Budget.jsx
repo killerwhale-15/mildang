@@ -100,10 +100,16 @@ function Budget({ error, estimate, isLoading = false, onContinue }) {
   )
 
   return (
-    <main
-      className="budget-screen"
-      aria-labelledby="budget-title"
-    >
+   <main
+  className="budget-screen"
+  aria-labelledby="budget-title"
+  style={{
+    height: '100dvh',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    WebkitOverflowScrolling: 'touch',
+  }}
+>
       <img
         className="budget-screen__logo"
         src={mildangLogo}
