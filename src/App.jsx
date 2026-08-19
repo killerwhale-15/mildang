@@ -198,10 +198,12 @@ function App() {
     } catch (requestError) { fail(requestError) } finally { setBusy('') }
   }
 
-  async function handleBudgetConfirm(option) {
+  // budget은 «주간값». optionKey는 선택이라 슬라이더만 쓰면 안 보내도 되고,
+  // 안 보내면 서버가 값에서 가장 가까운 옵션을 알아서 기록한다.
+  async function handleBudgetConfirm({ budget, optionKey }) {
     setBusy('budget'); setError('')
     try {
-      remember(await mildangApi.challenges.setBudget(challengeId, { survey, optionKey: option.optionKey, budget: option.budget }))
+      remember(await mildangApi.challenges.setBudget(challengeId, { survey, optionKey, budget }))
       await loadDashboard()
       setScreen('mainBoard')
     } catch (requestError) { fail(requestError) } finally { setBusy('') }
