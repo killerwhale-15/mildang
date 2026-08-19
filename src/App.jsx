@@ -228,6 +228,13 @@ function App() {
     } catch (requestError) { fail(requestError) } finally { setBusy('') }
   }
 
+  async function refreshTodayMeals() {
+    try {
+      const current = remember(await mildangApi.challenges.current())
+      setDashboard((dashboardState) => dashboardState ? { ...dashboardState, today: current.today } : dashboardState)
+    } catch { /* 기록은 이미 확정됐으므로 배너 갱신 실패는 화면을 막지 않습니다 */ }
+  }
+
   async function reloadMealItems() {
     const response = remember(await mildangApi.items.list({ kind: 'MEAL', status: ['PENDING', 'HAGGLED'] }))
     setMealItems(response.items ?? []); setMealSummary(response.summary ?? null)
@@ -293,7 +300,7 @@ function App() {
       const response = remember(await mildangApi.items.record(item.id))
       replaceItem(response.item); updateBudget(response.budget)
       setDashboard((current) => current ? { ...current, expiredConfirm: current.expiredConfirm?.filter((value) => value.id !== response.item?.id) } : current)
-      if (response.item?.kind === 'MEAL') await reloadMealItems()
+      if (response.item?.kind === 'MEAL') { await reloadMealItems(); await refreshTodayMeals() }
       if (response.overflow?.note) setError(response.overflow.note)
       sendLocalNotification('약속 선결제 완료', `${response.item?.original?.name ?? '약속 메뉴'}를 미리 반영했어요.`)
       if (screen === '4b_scanResult') setScreen('mainBoard')

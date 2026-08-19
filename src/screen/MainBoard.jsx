@@ -7,6 +7,7 @@ import progressThumb from '../img/mainboard-progress-thumb.svg'
 import uncheckedBase from '../img/mainboard-unchecked-base.svg'
 import uncheckedMark from '../img/mainboard-unchecked-mark.svg'
 import mildangLogo from '../img/onboarding_logo_3x.png'
+import { getItemDisplay } from '../api/itemView.js'
 import ChallengeCompletionButton from '../components/ChallengeCompletionButton.jsx'
 import '../css/MainBoard.css'
 
@@ -44,6 +45,14 @@ function getNoticeMessage(notice) {
   return `${name}이 있어요`
 }
 
+
+function getTodayItemView(item) {
+  const display = getItemDisplay(item)
+  return {
+    label: item?.label ?? item?.name ?? display.name,
+    points: item?.points ?? display.points,
+  }
+}
 
 function getCompletedCheckinDays(value, currentChallengeDay) {
   if (Array.isArray(value)) return value
@@ -100,10 +109,10 @@ function MainBoard({
       : '오늘 기록을 남기면 내일 더 정확한 흐름을 알려드릴게요.'
   )
   const today = dashboard?.today
-  const todayItems = today?.items ?? []
-  const todaySummary = today
-    ? `${today.count ?? todayItems.length}건 · ${today.totalPoints ?? 0}밀`
-    : '0건 · 0밀'
+  const todayItemViews = (today?.items ?? []).map(getTodayItemView)
+  const todayTotalPoints = today?.totalPoints
+    ?? todayItemViews.reduce((sum, item) => sum + item.points, 0)
+  const todaySummary = `${today?.count ?? todayItemViews.length}건 · ${todayTotalPoints}밀`
 
   return (
     <main className="main-board" aria-labelledby="main-board-title">
@@ -142,8 +151,8 @@ function MainBoard({
 
       <section className="today-meals" aria-labelledby="today-meals-title">
         <header><h2 id="today-meals-title">오늘 먹은 것</h2><span>{todaySummary}</span></header>
-        {todayItems.length > 0
-          ? <p>{todayItems.slice(0, 2).map((item) => `${item.label ?? item.name} ${item.points}밀`).join(' · ')}</p>
+        {todayItemViews.length > 0
+          ? <p>{todayItemViews.slice(0, 2).map((item) => `${item.label} ${item.points}밀`).join(' · ')}</p>
           : <p>아직 기록된 식사가 없어요.</p>}
       </section>
 
