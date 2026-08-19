@@ -390,3 +390,27 @@
     width: calc(100vw - 42px);
   }
 }
+
+.complete-report__back {
+  position: absolute;
+  top: 62px;
+  left: 16px;
+  z-index: 2;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+}
+
+.complete-report__back img {
+  width: 8px;
+  height: 14px;
+}
+
+.complete-report__back:active {
+  transform: scale(0.94);
+}
