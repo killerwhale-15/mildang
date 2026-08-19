@@ -1,6 +1,3 @@
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import accentCircle from '../img/complete-report-accent-circle.svg'
 import gridHorizontal from '../img/complete-report-grid-horizontal.svg'
 import gridVertical from '../img/complete-report-grid-vertical.svg'
@@ -13,9 +10,6 @@ import utensilLeft from '../img/complete-report-utensil-left.svg'
 import utensilRight from '../img/complete-report-utensil-right.svg'
 import '../css/7_completeReport.css'
 
-function StatusBar() {
-  return <div className="complete-report__status" aria-hidden="true"><img className="complete-report__time" src={statusTime} alt="" /><img className="complete-report__notch" src={notch} alt="" /><img className="complete-report__status-right" src={statusRight} alt="" /></div>
-}
 
 const bodyMetrics = [
   { key: 'weight', label: '몸무게 변화', value: '59kg → 53kg', icon: 'scale' },
@@ -39,7 +33,6 @@ function MetricIcon({ type }) {
 function CompleteReport({ error, isLoading = false, onShare, report, shareCard }) {
   return (
     <main className="complete-report" data-screen-name="7_completeReport" aria-labelledby="complete-report-title">
-      <StatusBar />
       <header className="complete-report__intro"><h1 id="complete-report-title">당신의 결과를 공유해보세요</h1><p>2주간의 변화를 한 장에 담았어요</p>{error && <p role="alert">{error}</p>}</header>
       <section className="report-card" aria-labelledby="report-card-title">
         <div className="report-card__motif" aria-hidden="true"><span className="report-card__motif-dish" /><span className="report-card__motif-base" /><img src={accentCircle} alt="" /></div>

@@ -2,9 +2,6 @@ import { useMemo, useState } from 'react'
 import backChevron from '../img/chevron-left.svg'
 import calendarArrows from '../img/record-calendar-arrows.svg'
 import monthForward from '../img/record-month-forward.svg'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import '../css/Record_a.css'
 
 const weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
@@ -37,15 +34,6 @@ function isSameMonthAndDay(date, viewDate, day) {
   )
 }
 
-function StatusBar() {
-  return (
-    <div className="record-a__status" aria-hidden="true">
-      <img className="record-a__time" src={statusTime} alt="" />
-      <img className="record-a__notch" src={notch} alt="" />
-      <img className="record-a__status-right" src={statusRight} alt="" />
-    </div>
-  )
-}
 
 function Record_a({ initialDate, onBack, onNext, recordDates = [] }) {
   const [viewDate, setViewDate] = useState(() => validDate(initialDate))
@@ -72,7 +60,6 @@ function Record_a({ initialDate, onBack, onNext, recordDates = [] }) {
 
   return (
     <main className="record-a" aria-labelledby="record-a-title">
-      <StatusBar />
 
       <header className="record-a__topbar">
         <button type="button" onClick={onBack} aria-label="메인보드로 돌아가기">

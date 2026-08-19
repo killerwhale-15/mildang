@@ -4,9 +4,6 @@ import scanCamera from '../img/figma-scan-09.svg'
 import scanFrame from '../img/figma-scan-03.svg'
 import scanGallery from '../img/figma-scan-02.svg'
 import scanShutter from '../img/figma-scan-08.svg'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import '../css/4a_cameraScan.css'
 
 function stopMediaStream(stream) {
@@ -189,11 +186,6 @@ function CameraScan({ onBack, onCapture }) {
 
   return (
     <main className="camera-scan" aria-labelledby="camera-scan-title">
-      <div className="camera-scan__status" aria-hidden="true">
-        <img className="camera-scan__time" src={statusTime} alt="" />
-        <img className="camera-scan__notch" src={notch} alt="" />
-        <img className="camera-scan__status-right" src={statusRight} alt="" />
-      </div>
 
       <header className="camera-scan__topbar">
         <button type="button" onClick={onBack} aria-label="뒤로가기">

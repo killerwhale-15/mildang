@@ -15,39 +15,6 @@
   font-family: inherit;
 }
 
-.condition-checkin__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 68px;
-  pointer-events: none;
-}
-
-.condition-checkin__status img {
-  position: absolute;
-}
-
-.condition-checkin__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.condition-checkin__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.condition-checkin__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .condition-checkin__header {
   position: absolute;
   top: 68px;

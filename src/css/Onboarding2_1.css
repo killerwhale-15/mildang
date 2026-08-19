@@ -272,36 +272,23 @@
   border-radius: 16px;
 }
 
-.payment-screen--two-week::after {
-  display: block;
-  width: 1px;
-  height: calc(env(safe-area-inset-top, 0px) + 770px);
-  content: '';
-}
-
 @media (max-width: 600px) {
   .payment-screen {
-    width: 100vw;
-    height: 100dvh;
+    width: 100%;
+    height: auto;
+    min-height: 100dvh;
     aspect-ratio: auto;
+    overflow: visible;
   }
 
   .payment-screen--two-week {
-    overflow-x: hidden;
-    overflow-y: auto;
-    overscroll-behavior-y: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-@media (max-height: 760px) {
-  .payment-screen--two-week .payment-card {
-    top: calc(env(safe-area-inset-top, 0px) + 310px);
-    height: 340px;
-  }
-
-  .payment-screen--two-week .payment-screen__submit {
-    top: calc(env(safe-area-inset-top, 0px) + 680px);
-    bottom: auto;
+    min-height: max(
+      100dvh,
+      calc(
+        790px +
+        env(safe-area-inset-top, 0px) +
+        env(safe-area-inset-bottom, 0px)
+      )
+    );
   }
 }

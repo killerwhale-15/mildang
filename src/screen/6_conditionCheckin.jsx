@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
 import mildangLogo from '../img/onboarding_logo_3x.png'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import '../css/6_conditionCheckin.css'
 
 const defaultQuestions = [
@@ -16,9 +13,6 @@ const options = [
   { value: 'BAD', label: '나쁨' },
 ]
 
-function StatusBar() {
-  return <div className="condition-checkin__status" aria-hidden="true"><img className="condition-checkin__time" src={statusTime} alt="" /><img className="condition-checkin__notch" src={notch} alt="" /><img className="condition-checkin__status-right" src={statusRight} alt="" /></div>
-}
 
 function ConditionCheckin({ checkin, error, isFetching = false, isLoading = false, onComplete }) {
   const questions = checkin?.questions?.length ? checkin.questions : defaultQuestions
@@ -53,7 +47,6 @@ function ConditionCheckin({ checkin, error, isFetching = false, isLoading = fals
 
   return (
     <main className="condition-checkin" aria-labelledby="condition-checkin-title" aria-busy={isFetching || isLoading}>
-      <StatusBar />
       <header className="condition-checkin__header"><img src={mildangLogo} alt="밀당" /></header>
       <section className="condition-checkin__intro"><p>{checkin?.date} · {checkin?.dayIndex}일차 체크인</p><h1 id="condition-checkin-title">오늘 몸은 어땠어요?</h1><span>오늘의 기록은 리포트에 반영돼요.</span>{(localError || error) && <p role="alert">{localError || error}</p>}</section>
       <section className="condition-checkin__form" aria-label="오늘의 컨디션">

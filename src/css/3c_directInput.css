@@ -25,39 +25,6 @@
   border: 0;
 }
 
-.direct-input-screen__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 50px;
-  pointer-events: none;
-}
-
-.direct-input-screen__status img {
-  position: absolute;
-}
-
-.direct-input-screen__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.direct-input-screen__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.direct-input-screen__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .direct-input-screen__header {
   position: absolute;
   top: 50px;

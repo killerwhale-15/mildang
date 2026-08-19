@@ -1,8 +1,5 @@
 import { useState } from 'react'
 import chevronLeft from '../img/chevron-left.svg'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import mildangLogo from '../img/onboarding_logo_3x.png'
 import '../css/Onboarding3.css'
 
@@ -12,9 +9,9 @@ const foodTypes = [
   { key: 'snack', label: '과자·간식류' },
 ]
 const frequencyOptions = [
+  { value: '0-1', label: '적음' },
   { value: '2-3', label: '보통' },
   { value: '4+', label: '많음' },
-  { value: '0-1', label: '적음' },
 ]
 const amountOptions = [
   { value: 'SMALL', label: '조금 먹어요' },
@@ -66,11 +63,6 @@ function Onboarding3({ error, isLoading = false, onBack, onContinue }) {
 
   return (
     <main className="habits-screen" aria-labelledby="habits-title">
-      <div className="habits-screen__status" aria-hidden="true">
-        <img className="habits-screen__time" src={statusTime} alt="" />
-        <img className="habits-screen__notch" src={notch} alt="" />
-        <img className="habits-screen__status-right" src={statusRight} alt="" />
-      </div>
 
       <nav className="habits-screen__nav" aria-label="온보딩 이동">
         <button type="button" onClick={onBack} aria-label="이전 화면">
@@ -82,7 +74,7 @@ function Onboarding3({ error, isLoading = false, onBack, onContinue }) {
 
       <section className="habits-screen__intro">
         <h1 id="habits-title"><span>평소 식습관을</span><span>알려주세요</span></h1>
-        <p>나에게 맞는 1주 예산을 추천해드릴게요.</p>
+        <p>나에게 맞는 예산을 추천해드릴게요.</p>
         {(localError || error) && <p className="habits-screen__error" role="alert">{localError || error}</p>}
       </section>
 

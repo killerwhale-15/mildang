@@ -13,39 +13,6 @@
   font-family: inherit;
 }
 
-.record-a__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 50px;
-  pointer-events: none;
-}
-
-.record-a__status img {
-  position: absolute;
-}
-
-.record-a__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.record-a__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.record-a__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .record-a__topbar {
   position: absolute;
   top: 46px;

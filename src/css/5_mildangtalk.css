@@ -25,39 +25,6 @@
   border: 0;
 }
 
-.mildang-talk__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 50px;
-  pointer-events: none;
-}
-
-.mildang-talk__status img {
-  position: absolute;
-}
-
-.mildang-talk__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.mildang-talk__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.mildang-talk__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .mildang-talk__topbar {
   position: absolute;
   top: 68px;

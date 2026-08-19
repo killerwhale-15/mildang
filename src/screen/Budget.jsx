@@ -1,8 +1,5 @@
 import { useMemo, useState } from 'react'
 import budgetFlexibility from '../img/budget-flexibility.svg'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import mildangLogo from '../img/onboarding_logo_3x.png'
 import '../css/Budget.css'
 
@@ -38,16 +35,11 @@ function Budget({ error, estimate, isLoading = false, onContinue }) {
 
   return (
     <main className="budget-screen" aria-labelledby="budget-title">
-      <div className="budget-screen__status" aria-hidden="true">
-        <img className="budget-screen__time" src={statusTime} alt="" />
-        <img className="budget-screen__notch" src={notch} alt="" />
-        <img className="budget-screen__status-right" src={statusRight} alt="" />
-      </div>
 
       <img className="budget-screen__logo" src={mildangLogo} alt="밀당" />
 
       <section className="budget-screen__intro">
-        <h1 id="budget-title"><span>1주 예산을</span><span>설정해볼까요?</span></h1>
+        <h1 id="budget-title"><span>예산을</span><span>설정해볼까요?</span></h1>
         <p>평소 밀가루 섭취량을 떠올려서 예산을 정해보세요</p>
         {error && <p className="budget-screen__error" role="alert">{error}</p>}
       </section>

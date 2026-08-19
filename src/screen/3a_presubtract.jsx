@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import { getItemDisplay } from '../api/itemView.js'
 import chevronLeft from '../img/chevron-left.svg'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import mildangLogo from '../img/onboarding_logo_3x.png'
 import cardDivider from '../img/presubtract-card-divider.svg'
 import scoreBackground from '../img/presubtract-score.svg'
@@ -15,9 +12,6 @@ const weekdays = [
   ['FRI', '금요일'], ['SAT', '토요일'], ['SUN', '일요일'],
 ]
 
-function StatusBar() {
-  return <div className="presubtract__status" aria-hidden="true"><img className="presubtract__time" src={statusTime} alt="" /><img className="presubtract__notch" src={notch} alt="" /><img className="presubtract__status-right" src={statusRight} alt="" /></div>
-}
 
 function PreSubtract({ error, isLoading = false, item, onBack, onOpenDirectInput, onPrepay, onStartChat }) {
   const [weekday, setWeekday] = useState(item?.weekday ?? 'FRI')
@@ -26,7 +20,6 @@ function PreSubtract({ error, isLoading = false, item, onBack, onOpenDirectInput
 
   return (
     <main className="presubtract" aria-labelledby="presubtract-title">
-      <StatusBar />
       <header className="presubtract__brand"><img src={mildangLogo} alt="밀당" /></header>
       <button className="presubtract__back" type="button" onClick={onBack} aria-label="메인보드로 돌아가기"><img src={chevronLeft} alt="" /></button>
       <section className="presubtract__intro"><h1 id="presubtract-title">약속 사전 결제</h1><p>피할 수 없는 약속은 미리 빼두세요.</p>{error && <p role="alert">{error}</p>}</section>

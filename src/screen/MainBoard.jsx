@@ -2,11 +2,8 @@ import checkBase from '../img/mainboard-check-base.svg'
 import checkMark from '../img/mainboard-check-mark.svg'
 import chevron from '../img/mainboard-chevron.svg'
 import coachIcon from '../img/mainboard-coach.svg'
-import notch from '../img/mainboard-notch.svg'
 import notificationBell from '../img/mainboard-notification-bell.svg'
 import progressThumb from '../img/mainboard-progress-thumb.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import uncheckedBase from '../img/mainboard-unchecked-base.svg'
 import uncheckedMark from '../img/mainboard-unchecked-mark.svg'
 import mildangLogo from '../img/onboarding_logo_3x.png'
@@ -47,9 +44,6 @@ function getNoticeMessage(notice) {
   return `${name}이 있어요`
 }
 
-function StatusBar() {
-  return <div className="main-board__status" aria-hidden="true"><img className="main-board__time" src={statusTime} alt="" /><img className="main-board__notch" src={notch} alt="" /><img className="main-board__status-right" src={statusRight} alt="" /></div>
-}
 
 function getCompletedCheckinDays(value, currentChallengeDay) {
   if (Array.isArray(value)) return value
@@ -113,7 +107,6 @@ function MainBoard({
 
   return (
     <main className="main-board" aria-labelledby="main-board-title">
-      <StatusBar />
       <header className="main-board__header"><h1 id="main-board-title"><img src={mildangLogo} alt="밀당" /></h1></header>
 
       <section className="budget-summary" aria-labelledby="budget-summary-title">

@@ -1,14 +1,8 @@
 import { useState } from 'react'
 import mildangLogo from '../img/onboarding_logo_3x.png'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import userIcon from '../img/mildangtalk-user.svg'
 import '../css/5_mildangtalk.css'
 
-function StatusBar() {
-  return <div className="mildang-talk__status" aria-hidden="true"><img className="mildang-talk__time" src={statusTime} alt="" /><img className="mildang-talk__notch" src={notch} alt="" /><img className="mildang-talk__status-right" src={statusRight} alt="" /></div>
-}
 
 const FALLBACK_RECENT_ITEMS = ['라면 80', '빵 45', '떡볶이 55', '치킨 70']
 
@@ -64,7 +58,6 @@ function MildangTalk({ error, onAbandon, onClose, onEnd, onSend, session }) {
   return (
     <main className="mildang-talk" aria-labelledby="mildang-talk-title">
       <h1 id="mildang-talk-title" className="mildang-talk__sr-only">밀당 대화</h1>
-      <StatusBar />
       <header className="mildang-talk__topbar"><img src={mildangLogo} alt="밀당" /><button className="mildang-talk__leave" type="button" onClick={handleAbandon}>나가기</button></header>
       <p className="mildang-talk__intro">밀당이와 대화를 시작해보세요</p>
       <div className="mildang-talk__date-separator"><time dateTime={current?.createdAt ?? current?.startedAt ?? current?.date ?? '2026-08-09'}>{chatDate}</time><div className="mildang-talk__new-message"><span /><strong>새로운 메세지</strong><span /></div></div>

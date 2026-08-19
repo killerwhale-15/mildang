@@ -2,9 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import chevronLeft from '../img/chevron-left.svg'
 import loadingCircle from '../img/meal-loading-circle.svg'
 import loadingMark from '../img/meal-loading-mark.svg'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import '../css/3c_directInput.css'
 
 const sourceCopy = {
@@ -13,9 +10,6 @@ const sourceCopy = {
   '4b_scanResult': { eyebrow: '스캔 결과', title: '인식하지 못한 메뉴가 있나요?', description: '직접 분석한 식사 후보를 추가해드려요.' },
 }
 
-function StatusBar() {
-  return <div className="direct-input-screen__status" aria-hidden="true"><img className="direct-input-screen__time" src={statusTime} alt="" /><img className="direct-input-screen__notch" src={notch} alt="" /><img className="direct-input-screen__status-right" src={statusRight} alt="" /></div>
-}
 
 function DirectInputScreen({ initialMenuName = '', onAnalyze, onBack, onLoadRecent, source = '3b_meal' }) {
   const [menuName, setMenuName] = useState(initialMenuName)
@@ -50,7 +44,6 @@ function DirectInputScreen({ initialMenuName = '', onAnalyze, onBack, onLoadRece
 
   return (
     <main className="direct-input-screen" aria-labelledby="direct-input-title">
-      <StatusBar />
       <header className="direct-input-screen__header"><button type="button" onClick={onBack} disabled={isAnalyzing} aria-label="이전 화면으로 돌아가기"><img src={chevronLeft} alt="" /></button><strong>{copy.eyebrow}</strong></header>
       <section className="direct-input-screen__context"><p>{copy.eyebrow}</p><h1 id="direct-input-title">{copy.title}</h1><span>{copy.description}</span></section>
       <section className="direct-input-sheet" aria-label="메뉴 직접 입력">

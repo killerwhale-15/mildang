@@ -20,39 +20,6 @@
   font-family: inherit;
 }
 
-.scan-result__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 50px;
-  pointer-events: none;
-}
-
-.scan-result__status img {
-  position: absolute;
-}
-
-.scan-result__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.scan-result__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.scan-result__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .scan-result__brandbar {
   position: absolute;
   top: 50px;

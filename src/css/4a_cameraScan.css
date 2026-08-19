@@ -14,39 +14,6 @@
   font-family: inherit;
 }
 
-.camera-scan__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 50px;
-  pointer-events: none;
-}
-
-.camera-scan__status img {
-  position: absolute;
-}
-
-.camera-scan__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.camera-scan__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.camera-scan__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .camera-scan__topbar {
   position: absolute;
   z-index: 3;

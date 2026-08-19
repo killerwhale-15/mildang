@@ -28,39 +28,6 @@
   pointer-events: none;
 }
 
-.habits-screen__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 50px;
-  pointer-events: none;
-}
-
-.habits-screen__status img {
-  position: absolute;
-}
-
-.habits-screen__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.habits-screen__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.habits-screen__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .habits-screen__nav {
   position: absolute;
   top: 46px;

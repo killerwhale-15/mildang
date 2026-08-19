@@ -13,39 +13,6 @@
   font-family: inherit;
 }
 
-.complete-report__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 68px;
-  pointer-events: none;
-}
-
-.complete-report__status img {
-  position: absolute;
-}
-
-.complete-report__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.complete-report__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.complete-report__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .complete-report__intro {
   position: absolute;
   top: 141px;

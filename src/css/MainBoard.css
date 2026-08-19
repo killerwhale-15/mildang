@@ -13,39 +13,6 @@
   font-family: inherit;
 }
 
-.main-board__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 50px;
-  pointer-events: none;
-}
-
-.main-board__status img {
-  position: absolute;
-}
-
-.main-board__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.main-board__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.main-board__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .main-board__header {
   position: absolute;
   top: 46px;

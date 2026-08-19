@@ -4,14 +4,8 @@ import cameraIcon from '../img/meal-camera.svg'
 import pencilIcon from '../img/meal-pencil.svg'
 import resultBadge from '../img/meal-result-badge.svg'
 import resultDivider from '../img/meal-result-divider.svg'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import '../css/3b_meal.css'
 
-function StatusBar() {
-  return <div className="meal-screen__status" aria-hidden="true"><img className="meal-screen__time" src={statusTime} alt="" /><img className="meal-screen__notch" src={notch} alt="" /><img className="meal-screen__status-right" src={statusRight} alt="" /></div>
-}
 
 function MealOption({ icon, title, description, onClick }) {
   return <button className="meal-option" type="button" onClick={onClick}><img className="meal-option__icon" src={icon} alt="" /><span className="meal-option__copy"><strong>{title}</strong><span>{description}</span></span><img className="meal-option__chevron" src={backChevron} alt="" /></button>
@@ -47,7 +41,6 @@ function MealScreen({ error, isLoading = false, mealItems = [], onBack, onBargai
   const hasMealItems = items.length > 0
   return (
     <main className={`meal-screen${hasMealItems ? ' meal-screen--with-results' : ''}`} aria-labelledby="meal-screen-title">
-      <StatusBar />
       <header className="meal-screen__topbar"><button type="button" onClick={onBack} aria-label="메인보드로 돌아가기"><img src={backChevron} alt="" /></button></header>
       <section className="meal-screen__intro"><h1 id="meal-screen-title">지금 뭐 드실 거예요?</h1><p>{hasMealItems ? '분석한 식사 후보예요.' : '사진을 찍거나 메뉴를 입력해주세요.'}</p>{error && <p role="alert">{error}</p>}</section>
       <section className="meal-screen__options" aria-label="식사 입력 방법">

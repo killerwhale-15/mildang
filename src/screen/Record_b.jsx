@@ -1,7 +1,4 @@
 import backChevron from '../img/chevron-left.svg'
-import notch from '../img/mainboard-notch.svg'
-import statusRight from '../img/mainboard-status-right.svg'
-import statusTime from '../img/mainboard-status-time.svg'
 import checkedBase from '../img/record-check-base-white.svg'
 import checkedOverlay from '../img/record-check-overlay-yellow.svg'
 import uncheckedBase from '../img/record-check-base-gray.svg'
@@ -20,15 +17,6 @@ function formatRecordDate(date) {
   ].join('.')
 }
 
-function StatusBar() {
-  return (
-    <div className="record-b__status" aria-hidden="true">
-      <img className="record-b__time" src={statusTime} alt="" />
-      <img className="record-b__notch" src={notch} alt="" />
-      <img className="record-b__status-right" src={statusRight} alt="" />
-    </div>
-  )
-}
 
 function ProgressIndicator({ completed, current }) {
   return (
@@ -66,7 +54,6 @@ function Record_b({
 
   return (
     <main className="record-b" aria-labelledby="record-b-title">
-      <StatusBar />
 
       <header className="record-b__topbar">
         <button type="button" onClick={onBack} aria-label="날짜 선택으로 돌아가기">

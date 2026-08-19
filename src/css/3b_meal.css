@@ -35,39 +35,6 @@
   display: none;
 }
 
-.meal-screen__status {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 50px;
-  pointer-events: none;
-}
-
-.meal-screen__status img {
-  position: absolute;
-}
-
-.meal-screen__time {
-  top: 12px;
-  left: 21px;
-  width: 54px;
-  height: 21px;
-}
-
-.meal-screen__notch {
-  top: -2px;
-  left: 50%;
-  width: 183px;
-  height: 30px;
-  transform: translateX(-50%);
-}
-
-.meal-screen__status-right {
-  top: 17px;
-  right: 15px;
-  width: 67px;
-  height: 12px;
-}
-
 .meal-screen__topbar {
   position: absolute;
   top: 46px;
