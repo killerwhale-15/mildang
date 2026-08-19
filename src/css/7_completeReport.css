@@ -13,6 +13,27 @@
   font-family: inherit;
 }
 
+/* 뒤로가기 — 결제 화면(.payment-screen__back)과 같은 자리·크기로 맞춘다 */
+.complete-report__back {
+  position: absolute;
+  z-index: 2;
+  top: calc(env(safe-area-inset-top, 0px) + 26px);
+  left: 12px;
+  display: grid;
+  width: 32px;
+  height: 40px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.complete-report__back img {
+  width: 9px;
+  height: 16px;
+}
+
 .complete-report__intro {
   position: absolute;
   top: 141px;
