@@ -7,13 +7,24 @@ import '../css/4b_scanResult.css'
 
 function normalizeScanMenu(menu) {
   const item = menu?.item
+  if (!item) {
+    return {
+      ...menu,
+      itemId: menu?.itemId,
+      name: menu?.name ?? '메뉴',
+      points: menu?.points,
+      basis: menu?.basis ?? '',
+      haggled: false,
+    }
+  }
+  const display = getItemDisplay(item)
   return {
     ...menu,
-    itemId: item?.id ?? menu?.itemId,
-    name: item?.label ?? menu?.name ?? '메뉴',
-    points: item ? item.points : menu?.points,
-    basis: item?.basis ?? menu?.basis ?? '',
-    haggled: item?.haggled === true,
+    itemId: item.id,
+    name: display.name || menu?.name || '메뉴',
+    points: display.points,
+    basis: display.basis || menu?.basis || '',
+    haggled: Boolean(item.adjusted) || item.status === 'HAGGLED',
   }
 }
 
@@ -54,7 +65,7 @@ function ScanResult({ error, isLoading = false, manualItems = [], onBack, onChat
     <main className="scan-result" aria-labelledby="scan-result-store">
       <header className="scan-result__brandbar"><img className="scan-result__logo" src={mildangLogo} alt="밀당" /><button className="scan-result__retake" type="button" onClick={onRetake}>재촬영</button></header>
       <section className="scan-result__store"><button className="scan-result__back" type="button" onClick={onBack} aria-label="식사 입력 화면으로 돌아가기"><img src={chevronLeft} alt="" /></button><div><h1 id="scan-result-store">{scan?.place ?? '메뉴판 분석 결과'}</h1><p>숫자를 탭하면 포인트를 직접 수정할 수 있어요.</p>{error && <p role="alert">{error}</p>}</div></section>
-      {selected && <article className="scan-result__recommendation"><p className="scan-result__eyebrow">밀당이의 추천</p><h2>{selected.name} {selected.points}밀</h2><p className="scan-result__advice">{scan?.recommendation?.comment ?? selected.basis}</p><div className="scan-result__actions"><button type="button" disabled={isLoading} onClick={() => onRecord?.(selected)}>{selected.points}밀 기록하기</button><button type="button" disabled={isLoading} onClick={() => onChat?.(selected)}>밀당하기</button></div></article>}
+      {selected && <article className="scan-result__recommendation"><p className="scan-result__eyebrow">밀당이의 추천</p><h2>{selected.name} {selected.points}밀</h2><p className="scan-result__advice">{selected.haggled ? selected.basis : (scan?.recommendation?.comment ?? selected.basis)}</p><div className="scan-result__actions"><button type="button" disabled={isLoading} onClick={() => onRecord?.(selected)}>{selected.points}밀 기록하기</button><button type="button" disabled={isLoading} onClick={() => onChat?.(selected)}>밀당하기</button></div></article>}
       <section className="scan-result__menu-section" aria-labelledby="scan-result-menu-title"><h2 id="scan-result-menu-title">밀가루 포인트가 낮은 순</h2><div className="scan-result__menu-list">
         {menus.map((menu) => {
           const isSelected = menu.id === selectedId

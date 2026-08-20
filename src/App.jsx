@@ -104,11 +104,20 @@ function App() {
     setDashboard((current) => current ? { ...current, budget: nextBudget } : current)
   }
 
+  function linkScanMenuItem(menuId, nextItem) {
+    setScan((current) => current?.menus
+      ? { ...current, menus: current.menus.map((menu) => menu.id === menuId ? { ...menu, itemId: nextItem.id, item: nextItem } : menu) }
+      : current)
+  }
+
   function replaceItem(nextItem) {
     if (!nextItem) return
     const setter = nextItem.kind === 'PROMISE' ? setPromiseItems : setMealItems
     setter((items) => items.map((item) => item.id === nextItem.id ? nextItem : item))
     setScanManualItems((items) => items.map((item) => item.id === nextItem.id ? nextItem : item))
+    setScan((current) => current?.menus
+      ? { ...current, menus: current.menus.map((menu) => menu.itemId === nextItem.id || menu.item?.id === nextItem.id ? { ...menu, itemId: nextItem.id, item: nextItem } : menu) }
+      : current)
   }
 
   useEffect(() => {
@@ -353,7 +362,7 @@ function App() {
 
   async function handleScanMenuUpdate(menuId, points) {
     const updated = remember(await mildangApi.scans.updateMenu(scan.id, menuId, points))
-    setScan((current) => ({ ...current, menus: current.menus.map((menu) => menu.id === menuId ? updated : menu) }))
+    setScan((current) => ({ ...current, menus: current.menus.map((menu) => menu.id === menuId ? { ...menu, ...updated } : menu) }))
     return updated
   }
 
@@ -363,6 +372,7 @@ function App() {
     const created = remember(await mildangApi.items.create({ kind: 'MEAL', scanId: scan.id, menuId: menu.id }))
     const item = created.item ?? created
     setMealItems((items) => [item, ...items])
+    linkScanMenuItem(menu.id, item)
     return item
   }
 
