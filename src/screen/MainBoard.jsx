@@ -7,6 +7,7 @@ import progressThumb from '../img/mainboard-progress-thumb.svg'
 import uncheckedBase from '../img/mainboard-unchecked-base.svg'
 import uncheckedMark from '../img/mainboard-unchecked-mark.svg'
 import mildangLogo from '../img/onboarding_logo_3x.png'
+import { getChallengeTotalDays, getChallengeWeek, getCurrentChallengeDay } from '../api/challengeProgress.js'
 import { getItemDisplay } from '../api/itemView.js'
 import ChallengeCompletionButton from '../components/ChallengeCompletionButton.jsx'
 import '../css/MainBoard.css'
@@ -51,14 +52,6 @@ function getTodayItemView(item) {
   }
 }
 
-function getCompletedCheckinDays(value, currentChallengeDay) {
-  if (Array.isArray(value)) return value
-  if (!value || typeof value !== 'object') {
-    return Array.from({ length: Math.max(0, currentChallengeDay - 1) }, (_, index) => index + 1)
-  }
-  return Array.from({ length: value.answered ?? 0 }, (_, index) => index + 1)
-}
-
 function ChallengeCheck({ completed }) {
   return <span className="challenge-check" aria-label={completed ? '완료' : '미완료'}><img src={completed ? checkBase : uncheckedBase} alt="" /><img src={completed ? checkMark : uncheckedMark} alt="" /></span>
 }
@@ -77,21 +70,13 @@ function MainBoard({
 
   const challenge = dashboard.challenge
   const budget = dashboard.budget
-  const challengeWeeks = Number(String(challenge.period ?? 'W1').slice(1)) || 1
-  const currentChallengeDay = challenge.dayIndex ?? challenge.currentDay ?? 1
-  const currentWeek = Math.ceil(currentChallengeDay / 7)
+  const currentChallengeDay = getCurrentChallengeDay(challenge)
   const currentDayOfWeek = ((currentChallengeDay - 1) % 7) + 1
-  const totalChallengeDays = challengeWeeks * 7
-  const isChallengeLastDay = currentChallengeDay >= totalChallengeDays
-  const suppliedCheckinDays = dashboard?.checkin?.checkinDays
-  const checkinDays = getCompletedCheckinDays(suppliedCheckinDays, currentChallengeDay)
-  const completedDaySet = new Set(checkinDays)
-  if (dashboard?.checkin?.doneToday) completedDaySet.add(currentChallengeDay)
-  const isTodayCompleted = completedDaySet.has(currentChallengeDay)
-  const firstDayOfWeek = (currentWeek - 1) * 7 + 1
-  const challengeDays = Array.from({ length: 7 }, (_, index) => {
-    const challengeDay = firstDayOfWeek + index
-    return { challengeDay, day: `${index + 1}일차`, completed: completedDaySet.has(challengeDay) }
+  const isChallengeLastDay = currentChallengeDay >= getChallengeTotalDays(challenge)
+  const { week: currentWeek, days: challengeDays, isTodayCompleted } = getChallengeWeek({
+    challenge,
+    checkinDays: dashboard?.checkin?.checkinDays,
+    doneToday: dashboard?.checkin?.doneToday,
   })
   const gauge = budget.gaugePercent ?? 0
   const notice = dashboard?.todayNotification ?? dashboard?.notification ?? dashboard?.todayNotice

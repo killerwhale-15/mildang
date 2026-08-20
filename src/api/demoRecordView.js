@@ -86,7 +86,7 @@ export function getDemoRecordView(account, now = new Date()) {
   })
   return {
     challenge: seed.challenge,
-    checkinDays: (seed.checkins ?? []).map((checkin) => {
+    checkinDays: seed.checkins?.map((checkin) => {
       const match = String(checkin.date).match(/^D-(\d+)$/)
       return Math.max(1, seed.challenge.dayIndex - (match ? Number(match[1]) : 0))
     }),
@@ -119,6 +119,7 @@ export function getRecordedItemsView(items, fallbackView = {}, now = new Date())
   return {
     ...fallbackView,
     initialDate: today,
+    logicalDate: today,
     recordDates: records.map((record) => record.date),
     records,
   }

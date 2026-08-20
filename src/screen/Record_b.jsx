@@ -3,6 +3,7 @@ import checkedBase from '../img/record-check-base-white.svg'
 import checkedOverlay from '../img/record-check-overlay-yellow.svg'
 import uncheckedBase from '../img/record-check-base-gray.svg'
 import uncheckedOverlay from '../img/record-check-overlay-white.svg'
+import { getChallengeDayForDate, getChallengeWeek } from '../api/challengeProgress.js'
 import '../css/Record_b.css'
 
 function formatRecordDate(date) {
@@ -18,39 +19,32 @@ function formatRecordDate(date) {
 }
 
 
-function ProgressIndicator({ completed, current }) {
+function ProgressIndicator({ completed, focused }) {
   return (
-    <span className={`record-b__progress-indicator${current ? ' record-b__progress-indicator--current' : ''}`} aria-label={completed ? '완료' : current ? '오늘' : '미완료'}>
+    <span className={`record-b__progress-indicator${focused ? ' record-b__progress-indicator--focused' : ''}`} aria-label={completed ? '체크인 완료' : '체크인 없음'}>
       <img src={completed ? checkedBase : uncheckedBase} alt="" />
       <img src={completed ? checkedOverlay : uncheckedOverlay} alt="" />
     </span>
   )
 }
 
-function getCompletedCheckinDays(value) {
-  if (Array.isArray(value)) return value
-  if (!value || typeof value !== 'object') return []
-  return Array.from({ length: value.answered ?? 0 }, (_, index) => index + 1)
-}
-
 function Record_b({
   challenge,
-  checkinDays = [],
+  checkinDays,
+  doneToday,
   onBack,
   selectedDate,
+  todayDate,
   mealRecords = [],
 }) {
   const records = Array.isArray(mealRecords) ? mealRecords : []
-  const currentDay = challenge?.dayIndex ?? 1
-  const currentWeek = Math.ceil(currentDay / 7)
-  const firstDayOfWeek = (currentWeek - 1) * 7 + 1
-  const completedDays = new Set(getCompletedCheckinDays(checkinDays))
-  const challengeDays = Array.from({ length: 7 }, (_, index) => ({
-    day: index + 1,
-    challengeDay: firstDayOfWeek + index,
-    completed: completedDays.has(firstDayOfWeek + index),
-    current: firstDayOfWeek + index === currentDay,
-  }))
+  const focusDay = getChallengeDayForDate(selectedDate, challenge, todayDate)
+  const { week: selectedWeek, days: challengeDays } = getChallengeWeek({
+    challenge,
+    checkinDays,
+    doneToday,
+    focusDay,
+  })
 
   return (
     <main className="record-b" aria-labelledby="record-b-title">
@@ -67,13 +61,17 @@ function Record_b({
       </section>
 
       <section className="record-b__progress" aria-labelledby="record-progress-title">
-        <h2 id="record-progress-title">{currentWeek}주차 챌린지 진행률</h2>
+        <h2 id="record-progress-title">{selectedWeek}주차 챌린지 진행률</h2>
         <ol>
-          {challengeDays.map(({ day, challengeDay, completed, current }) => (
-            <li className={current ? 'record-b__progress-day--current' : ''} key={challengeDay}>
-              <span className="record-b__day-label">{day}일차</span>
-              <ProgressIndicator completed={completed} current={current} />
-              {current && <span className="record-b__today">오늘</span>}
+          {challengeDays.map(({ day, challengeDay, completed, focused, isToday }) => (
+            <li className={focused ? 'record-b__progress-day--focused' : ''} key={challengeDay}>
+              <span className="record-b__day-label">{day}</span>
+              <ProgressIndicator completed={completed} focused={focused} />
+              {(focused || isToday) && (
+                <span className={`record-b__day-marker${isToday ? ' record-b__day-marker--today' : ''}`}>
+                  {isToday ? '오늘' : '선택'}
+                </span>
+              )}
             </li>
           ))}
         </ol>
