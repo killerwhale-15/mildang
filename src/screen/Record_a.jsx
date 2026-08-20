@@ -59,7 +59,16 @@ function Record_a({ initialDate, onBack, onNext, recordDates = [] }) {
   }
 
   return (
-    <main className="record-a" aria-labelledby="record-a-title">
+    <main
+  className="record-a"
+  aria-labelledby="record-a-title"
+  style={{
+    height: '100dvh',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    WebkitOverflowScrolling: 'touch',
+  }}
+>
 
       <header className="record-a__topbar">
         <button type="button" onClick={onBack} aria-label="메인보드로 돌아가기">

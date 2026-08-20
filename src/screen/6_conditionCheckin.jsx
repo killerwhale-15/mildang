@@ -48,8 +48,23 @@ function ConditionCheckin({ checkin, error, isFetching = false, isLoading = fals
 
   return (
     <main className="condition-checkin" aria-labelledby="condition-checkin-title" aria-busy={isFetching || isLoading}>
-      <header className="condition-checkin__header"><img src={mildangLogo} alt="밀당" /></header>
-      <button className="condition-checkin__back" type="button" onClick={onBack} aria-label="메인보드로 돌아가기"><img src={chevronLeft} alt="" /></button>
+     <header className="condition-checkin__header">
+ 
+    <button
+      className="condition-checkin__back"
+      type="button"
+      onClick={onBack}
+      aria-label="메인보드로 돌아가기"
+    >
+      <img src={chevronLeft} alt="" />
+    </button>
+
+  <img
+    className="condition-checkin__logo"
+    src={mildangLogo}
+    alt="밀당"
+  />
+</header>
       <section className="condition-checkin__intro"><p>{checkin?.date} · {checkin?.dayIndex}일차 체크인</p><h1 id="condition-checkin-title">오늘 몸은 어땠어요?</h1><span>오늘의 기록은 리포트에 반영돼요.</span>{(localError || error) && <p role="alert">{localError || error}</p>}</section>
       <section className="condition-checkin__form" aria-label="오늘의 컨디션">
         {questions.map((question) => <article className="condition-card" key={question.key}><header><h2>{question.label}</h2><p>{question.desc ?? question.description}</p></header><div className="condition-card__choices" role="radiogroup" aria-label={question.label}>
